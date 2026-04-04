@@ -1,0 +1,8 @@
+handleHideAlert = () => {
+  this.setState({ showAlert: false });
+};
+handleShowAlert = () => {
+  this.setState({ showAlert: true });
+};
+
+{showAlert && <CustomAlert path={"/pet-finder"} title={"Tag Registration Successful"} message={"You will be redirected shortly..."} time={3000} onClose={this.handleHideAlert} />}

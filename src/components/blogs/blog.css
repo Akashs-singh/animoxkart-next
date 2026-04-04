@@ -1,0 +1,7 @@
+.blog-content img {
+        max-width: 100%;    
+    }
+.description h2{
+    font-size: 20px !important;
+    font-weight: 600 !important;
+}

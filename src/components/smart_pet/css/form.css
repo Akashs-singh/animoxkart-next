@@ -1,0 +1,39 @@
+:root {
+    --primary-color-blue: #447CC4;
+    --secondary-color-green: #94C444;
+    --secondary-color-blue: #C8DCF7;
+    --secondary-color-green: #DBECBE;
+    --grey-color: #303841;
+    --light-grey-color: #C3CBD4;
+    /* --background-color: #FAFAFA; */
+    --black-color: #151515;
+    --white-color: #FAFAFA;
+  }
+
+  .add-text-button{
+        background: none;
+        border: none;
+        color: #447CC4;
+        font-size: 16px;
+        font-weight: 500;
+        text-transform: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+  }
+  .add-text-button:hover{
+    background: none;
+    border: none;
+    color: #447CC4;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.input-group-text{
+    border-radius: 0px 8px 8px 0px;
+}

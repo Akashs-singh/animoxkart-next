@@ -1,0 +1,176 @@
+
+.accordion-button{
+    font-weight: bold;
+}
+p{
+    line-height: 1.2;
+}
+h2{
+    line-height: 1.2;
+}
+@media screen and (max-width: 768px) {
+    .first-tag-intro-section{
+        background-image: url('../assets/mobile-first-banner.png');
+        background-size: 100% 100%; /* Stretches to fit full width and height */
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 90vh;
+        display: flex;
+    }
+    .tag-intro-content {
+        margin-top: 24px;
+        margin-left: 16px;
+    }
+    .tag-intro-content h2{
+        font-size: 1.5rem;
+        color: white;
+    }
+    .tag-intro-content h4{
+        display: none;
+        font-size: 0.8rem;
+        color: white;
+    }
+    .second-tag-intro-section {
+        background-color: aliceblue;
+        padding: 16px;
+      
+    }
+    .second-tag-intro-section .details{
+        padding-top: 16px;  
+    }
+    .second-tag-intro-section .mob-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        img{
+            width: 96%;
+        }
+       
+    }
+    .third-tag-intro-section {
+        background-color: #FAFAFA;
+        padding: 16px;
+      
+    }
+    .third-tag-intro-section .details{
+        padding-top: 16px;  
+    }
+    .third-tag-intro-section .mob-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        img{
+            width: 96%;
+        }
+       
+    }
+    .fourth-tag-intro-section {
+        background-color: aliceblue;
+        padding: 16px;
+      
+    }
+    .fourth-tag-intro-section .details{
+        padding-top: 16px;  
+    }
+    .fourth-tag-intro-section .mob-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        img{
+            width: 96%;
+        }
+       
+    }
+}
+@media screen and (min-width: 769px) {
+    .first-tag-intro-section {
+        background-image: url('../assets/desktop-first-banner.png');
+        background-size: 100% 100%; /* Stretches to fit full width and height */
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100vw; /* Ensures full width */
+        height: 120vh;
+        display: flex;
+        /* justify-content: center; */
+        /* flex-direction: column; */
+    }
+    .tag-intro-content {
+        margin-top: 24px;
+        margin-left: 24px;
+    }
+    .tag-intro-content h2{
+        font-size: 2rem;
+        color: white;
+        /* text-align: center; */
+    }
+    .tag-intro-content h4{
+        font-size: 1.5rem;
+        color: white;
+    }
+
+    .second-tag-intro-section {
+        background-color: aliceblue;
+        padding: 24px;
+      
+    }
+    .second-tag-intro-section .container-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .second-tag-intro-section .mob-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        img {
+            width: 400px;
+        }
+    }
+
+    .third-tag-intro-section {
+        background-color: #FAFAFA;
+        padding: 24px;
+      
+    }
+    .third-tag-intro-section .container-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .third-tag-intro-section .mob-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        img {
+            width: 400px;
+        }
+    }
+
+    .fourth-tag-intro-section {
+        background-color: aliceblue;
+        padding: 24px;
+      
+    }
+    .fourth-tag-intro-section .container-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+    }
+    .fourth-tag-intro-section .mob-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        img {
+            width: 400px;
+        }
+    }
+}
