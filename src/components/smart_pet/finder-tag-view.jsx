@@ -147,7 +147,7 @@ class FinderTagView extends Component {
                 <div className="pet-profile-header">
                     <div className="image-section">
                         <img
-                            src={data.image != null ? `https://animoxkart-users.s3.ap-south-1.amazonaws.com/pets/${data.image}` : `/assets/images/pets/smart-pet/${data.pet_type.toLowerCase()}.png`}
+                            src={data.image != null ? `https://animoxkart-users.s3.ap-south-1.amazonaws.com/pets/${data.image}` : `/assets/images/pets/smart-pet/${data.pet_type ? data.pet_type.toLowerCase() : 'dog'}.png`}
                             // src={data.image || "default-dog-image.jpg"} // Use data.image or fallback to a default image
                             alt={data.name || "Pet"}
                             className="dog-image"
@@ -179,12 +179,12 @@ class FinderTagView extends Component {
                         </div>
                     </div>
                     <div className="location-section">
-                        {this.state.showShareLocationButton ? <><p>Share your location to pet owner</p><button className="location-button btn" onClick={this.shareCurrentLocation}>  <i className="fa-solid fa-map-location-dot"></i>&nbsp; Share </button></> : ''}
+                        {this.state.showShareLocationButton ? <><p>Share your location to pet owner</p><button className="location-button btn" onClick={this.shareCurrentLocation}>  <i className="fa fa-map-marker"></i>&nbsp; Share </button></> : ''}
 
 
                     </div>
                     <div className="behaviour-section">
-                        <h3><i className="fa-solid fa-paw"></i> Behaviour</h3>
+                        <h3><i className="fa fa-paw"></i> Behaviour</h3>
                         <div className="capsule-area">
                             {
                                 data.behaviour ? data.behaviour.map((behaviour, index) => (
@@ -194,7 +194,7 @@ class FinderTagView extends Component {
                         </div>
                     </div>
                     <div className="health-section">
-                        <h3><i className="fa-solid fa-heart"></i> Health</h3>
+                        <h3><i className="fa fa-heart"></i> Health</h3>
                         <div className="capsule-area">
                             {
                                 data.health ? data.health.map((health, index) => (
@@ -204,7 +204,7 @@ class FinderTagView extends Component {
                         </div>
                     </div>
                     <div className="food-section">
-                        <h3><i className="fa-solid fa-bone"></i> Food</h3>
+                        <h3><i className="fa fa-cutlery"></i> Food</h3>
                         <div className="capsule-area">
                             {
                                 data.food ? data.food.map((food, index) => (
@@ -218,7 +218,7 @@ class FinderTagView extends Component {
                 <div className="family-section">
                     <div className="family-section-header" >
                     {data.alert_on ?
-                        <h3><i className="fa-solid fa-users"></i> Family's</h3> : <h3><i className="fa-solid fa-shield-halved"></i> Chat with pet parent's</h3>}
+                        <h3><i className="fa fa-users"></i> Family's</h3> : <h3><i className="fa fa-shield"></i> Chat with pet parent's</h3>}
                     
                         <button className="btn" onClick={this.openChat}>
                             <img className="contact-icon" src={`/assets/images/icon/message.png`} alt="message" />

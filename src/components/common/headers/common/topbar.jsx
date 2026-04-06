@@ -55,7 +55,7 @@ class TopBar extends Component {
                                 
                                 <li className="onhover-dropdown mobile-account">
                                     <i className="fa fa-user" aria-hidden="true"></i> {translate('my_account')}
-                                    {this.state.isClient && (
+                                    {this.state.isClient ? (
                                         this.state.account ? (
                                             <ul className="onhover-show-div">
                                                 <li><a href="/dashboard" data-lng="en">Dashboard</a></li>
@@ -72,6 +72,15 @@ class TopBar extends Component {
                                                 </li>
                                             </ul>
                                         )
+                                    ) : (
+                                        <ul className="onhover-show-div">
+                                            <li>
+                                                <Link href="/login" data-lng="en">Login</Link>
+                                            </li>
+                                            <li>
+                                                <Link href="/register" data-lng="en">Register</Link>
+                                            </li>
+                                        </ul>
                                     )}
                                 </li>
                                 

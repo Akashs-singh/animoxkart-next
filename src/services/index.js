@@ -152,7 +152,7 @@ export const getCategoryTagCollections = (allproducts, type, tag) => {
 
 // getCategoryTagTypeCollections
 export const getCategoryTagTypeCollections = (allproducts, category, tag, type) => {
-    console.log("Type in getCategoryTagCollections:", type);
+    // console.log("Type in getCategoryTagCollections:", type);
     const products = allproducts['products'];
     if (type === "all") {
         const items = products.filter(product => {

@@ -20,7 +20,6 @@ class ProductBlock extends Component {
 
   render() {
     const { productTags } = this.props
-    console.log(productTags);
     return (
       <section className="section-b-space premium-product-block-section">
         <div className="container">

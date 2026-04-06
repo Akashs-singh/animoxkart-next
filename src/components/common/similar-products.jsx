@@ -31,7 +31,7 @@ class SimilarProducts extends Component {
         const {items, symbol, addToCartHome, addToWishlist, addToCompare, title, subtitle} = this.props;
         return (
             <div>
-                <section className="ratio_asos section-b-space">
+                <section className="ratio_asos section-b-space p-t-0 s-box">
                     <div className="title2">
                         <h2 className="title-inner2">Similar Products</h2>
                     </div>

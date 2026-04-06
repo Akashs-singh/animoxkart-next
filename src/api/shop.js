@@ -27,7 +27,7 @@ const getProductsFromAPI = async () => {
 
     const decodedString = CryptoJS.enc.Utf8.stringify(decrypted);
     const decoded = JSON.parse(decodedString);
-    console.log("products", decoded);
+    // console.log("products", decoded);
     return decoded;
 
   } catch (error) {
@@ -55,7 +55,7 @@ const getTagsFromAPI = async () => {
 
     const decodedString = CryptoJS.enc.Utf8.stringify(decrypted);
     const decoded = JSON.parse(decodedString);
-    console.log("tags",decoded);
+    // console.log("tags",decoded);
     return decoded;
 
   } catch (error) {

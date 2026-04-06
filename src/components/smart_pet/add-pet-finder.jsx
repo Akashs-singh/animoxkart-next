@@ -12,8 +12,7 @@ class AddPetFinder extends Component {
   constructor(props) {
     super(props);
 
-    const { match } = this.props;
-    const { params } = match;
+    const { params } = this.props;
     const { tag_id } = params;
 
     this.state = {
@@ -145,8 +144,7 @@ class AddPetFinder extends Component {
 
   componentDidMount() {
     // Check authentication and get contact_id only on client side
-    const { match } = this.props;
-    const { params } = match;
+    const { params } = this.props;
     const { tag_id } = params;
     
     isLoggedin('pet-finder-tag/register/' + tag_id, true);

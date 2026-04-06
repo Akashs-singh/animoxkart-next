@@ -157,7 +157,7 @@ class ProductNew extends Component {
                     </div>
                 </div>
 
-                <div className="product-action-buttons pl-2 pt-2 pr-2">
+                <div className="product-action-buttons pl-2">
                     <a className="product-action-icon" href="javascript:void(0)" title="Add to Wishlist" onClick={onAddToWishlistClicked} >
                         <i className="fa fa-heart" aria-hidden="true"></i>
                     </a>

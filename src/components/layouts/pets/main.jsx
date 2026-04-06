@@ -73,6 +73,13 @@ class Pets extends Component {
         <OfferSlider />
         {/* Banner Section */}
         <section className="pt-0 mt-4 banner-6 ratio2_1">
+          <style jsx>{`
+            @media (max-width: 767px) {
+              .banner-second-row {
+                display: none !important;
+              }
+            }
+          `}</style>
           <div className="container">
             <div className="row partition3">
               {[
@@ -96,7 +103,7 @@ class Pets extends Component {
                 </div>
               ))}
             </div>
-            <div className="row partition3 banner-top-cls">
+            <div className="row partition3 banner-top-cls banner-second-row">
               {[
                 { href: '/shop/combo',      img: '4' },
                 { href: '/shop/regular',    img: '5' },

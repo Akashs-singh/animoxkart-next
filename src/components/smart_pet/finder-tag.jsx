@@ -1,84 +1,84 @@
+
 'use client'
-import React, { Component } from 'react';
-import Cookies from 'js-cookie';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import FinderTagView from './finder-tag-view';
 import { BlinkBlur } from 'react-loading-indicators';
 
-class FinderTag extends Component {
-  constructor(props) {
-    super(props);
+const FinderTag = ({ params }) => {
+  const router = useRouter();
+  const { tag_id } = params;
 
-    // Retrieve the tag_id from URL parameters
-    const { match } = this.props;
-    const { params } = match;
-    const { tag_id } = params;
-
-    this.state = {
-      tag_id: tag_id,
-      tag: {},
-      petProfile: true,
-      loading: true,
-    };
-    // Fetch tag data when the component is created
-    this.getTagDetails(tag_id);
-  }
-  componentDidMount() {
-    this.getTagDetails(this.state.tag_id);
-  }
+  const [state, setState] = useState({
+    tag: {},
+    petProfile: true,
+    loading: true,
+  });
 
   // Fetch pet tag details based on tag_id
-  getTagDetails = async (tag_id) => {
+  const getTagDetails = async (tagId) => {
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_NEW}/whoami/${tag_id}`, {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_NEW}/whoami/${tagId}`, {
         headers: {
           "Content-Type": "application/json",
           'Access-Control-Allow-Origin': '*',
         }
       });
       if (response.status === 200 && response.data.tags.length > 0) {
-        this.setState({
+        setState(prev => ({
+          ...prev,
           tag: response.data.tags[0],
           loading: false,
-        });
-
-      } else if (response.status === 200 && response.data.tags.length == 0) {
-        this.props.history.push('/pet-finder-tag/register/' + tag_id);
-      }
-      else {
-        this.props.history.push('/');
+        }));
+      } else if (response.status === 200 && response.data.tags.length === 0) {
+        router.push('/pet-finder-tag/register/' + tagId);
+      } else {
+        router.push('/');
       }
     } catch (error) {
       console.error('Error fetching tag data:', error);
+      setState(prev => ({ ...prev, loading: false }));
     }
   };
 
-  handleLocationClick = () => {
-    this.setState({
+  useEffect(() => {
+    // Fetch tag data after component is mounted
+    if (tag_id) {
+      getTagDetails(tag_id);
+    }
+  }, [tag_id]);
+
+  const handleLocationClick = () => {
+    setState(prev => ({
+      ...prev,
       showLocation: true,
       petProfile: false,
-    });
+    }));
   };
-  handleBackClick = () => {
-    this.setState({
+
+  const handleBackClick = () => {
+    setState(prev => ({
+      ...prev,
       showLocation: false,
       petProfile: true,
-    });
+    }));
   };
-  render() {
-    const { tag, petProfile } = this.state;
-  
-    return (
-      <div>
-        <section className="collection section-b-space">
-        {this.state.loading? 
-                        <div className="loading-indicator"><BlinkBlur color="#427fc1" size="small" text="loading" textColor="#020202" /></div> :
-          <>{petProfile && <FinderTagView data={tag} onLocationClick={this.handleLocationClick} />}</>
+
+  const { tag, petProfile, loading } = state;
+
+  return (
+    <div>
+      <section className="collection section-b-space">
+        {loading ?
+          <div className="loading-indicator">
+            <BlinkBlur color="#427fc1" size="small" text="loading" textColor="#020202" />
+          </div> :
+          <>{petProfile && <FinderTagView data={tag} onLocationClick={handleLocationClick} />}</>
         }
-        </section>
-      </div>
-    );
-  }
-}
+      </section>
+    </div>
+  );
+};
 
 export default FinderTag;

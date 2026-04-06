@@ -12,8 +12,7 @@ class UpdatePetFinder extends Component {
   constructor(props) {
     super(props);
 
-    const { match } = this.props;
-    const { params } = match;
+    const { params } = this.props;
     const { tag_id } = params;
     isLoggedin('pet-finder-tag/update/' + tag_id, true);
     const data = {

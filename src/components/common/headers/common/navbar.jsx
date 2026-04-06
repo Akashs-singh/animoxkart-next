@@ -9,19 +9,21 @@ class NavBar extends Component {
         super(props);
 
         this.state = {
-            navClose: { right: '0px' }
+            navClose: { right: '-410px' }  // Start with menu closed on mobile
         }
     }
 
     componentDidMount() {
         // Check window size on mount (client-side only)
         if (typeof window !== 'undefined') {
-            if (window.innerWidth < 750) {
-                this.setState({ navClose: { right: '-410px' } })
-            }
-            if (window.innerWidth < 1199) {
+            if (window.innerWidth >= 1199) {
+                // Only open on desktop
+                this.setState({ navClose: { right: '0px' } })
+            } else if (window.innerWidth >= 750) {
+                // Medium screens
                 this.setState({ navClose: { right: '-300px' } })
             }
+            // Mobile stays at -410px (already set in initial state)
         }
     }
 
@@ -209,6 +211,7 @@ class NavBar extends Component {
                                 <Link href="#" className="nav-link" onClick={(e) => this.handleSubmenu(e)}>{translate('smart_pet')}<span className="sub-arrow"></span>
                                 </Link>
                                 <ul className="nav-submenu">
+                                    <li><Link href="/pet-finder-tag/intro" onClick={this.closeNav.bind(this)} >Introduction</Link></li>
                                     <li><Link href="/pet-finder-tag" onClick={this.closeNav.bind(this)} >{translate('pet_finder')}</Link></li>
                                     <li><Link href="/my-pets" onClick={this.closeNav.bind(this)} >{translate('my_pets')}</Link></li>
                                 </ul>

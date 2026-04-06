@@ -8,19 +8,16 @@ class MyPets extends Component {
 
     constructor(props) {
         super(props)
-        isLoggedin('my-pets/', true);
-
-        const contact_id = getContactIdFromJWT();
-    
-        const data = {
-            "contact_id": contact_id
-        }
         this.state = {
             pets: [],
             loading: true,
         }
-        this.getPets(data.contact_id);
-        
+    }
+
+    componentDidMount() {
+        isLoggedin('my-pets/', true);
+        const contact_id = getContactIdFromJWT();
+        this.getPets(contact_id);
     }
     getPets = async (contact_id) => {
         const response = await axios.get(process.env.NEXT_PUBLIC_API_URL_NEW + '/pets-by-contact/'+ contact_id, {

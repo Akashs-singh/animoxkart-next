@@ -85,7 +85,7 @@ class PetProfile extends Component {
                     </div>
                 </div>
                 <div className="section-2-area">
-                    <div className="edit-section"><h3>About {data.pet_name || "the pet"}</h3> <a href={`pet-finder-tag/update/${data.tag_id}`}><i className="fa-solid fa-pen-to-square"></i></a></div>
+                    <div className="edit-section"><h3>About {data.pet_name || "the pet"}</h3> <a href={`pet-finder-tag/update/${data.tag_id}`}><i className="fa fa-pencil-square-o"></i></a></div>
                     <div className="about-section">
                         <div className="stats">
                             <div className="stat">
@@ -103,10 +103,10 @@ class PetProfile extends Component {
                         </div>
                     </div>
                     <div className="location-section">
-                        <p>View your {data.pet_name || "the Pet"}'s location</p><button className="location-button btn" onClick={this.props.onLocationClick}>View &nbsp; <i className="fa-solid fa-location-dot"></i></button>
+                        <p>View your {data.pet_name || "the Pet"}'s location</p><button className="location-button btn" onClick={this.props.onLocationClick}>View &nbsp; <i className="fa fa-map-marker"></i></button>
                     </div>
                     <div className="behaviour-section">
-                        <h3><i className="fa-solid fa-paw"></i> Behaviour</h3>
+                        <h3><i className="fa fa-paw"></i> Behaviour</h3>
                         <div className="capsule-area">
                             {
                                 data.behaviour ? data.behaviour.map((behaviour, index) => (
@@ -116,7 +116,7 @@ class PetProfile extends Component {
                         </div>
                     </div>
                     <div className="health-section">
-                        <h3><i className="fa-solid fa-heart"></i> Health</h3>
+                        <h3><i className="fa fa-heart"></i> Health</h3>
                         <div className="capsule-area">
                             {
                                 data.health ? data.health.map((health, index) => (
@@ -126,7 +126,7 @@ class PetProfile extends Component {
                         </div>
                     </div>
                     <div className="food-section">
-                        <h3><i className="fa-solid fa-bone"></i> Food</h3>
+                        <h3><i className="fa fa-cutlery"></i> Food</h3>
                         <div className="capsule-area">
                             {
                                 data.food ? data.food.map((food, index) => (
@@ -139,7 +139,7 @@ class PetProfile extends Component {
 
                 <div className="family-section">
                     <div className="family-section-header" >
-                        <h3><i className="fa-solid fa-users"></i> Family's</h3>
+                        <h3><i className="fa fa-users"></i> Family's</h3>
                         <button className="btn" onClick={this.openChat} >
                             <img className="contact-icon" src={`/assets/images/icon/message.png`} alt="message" />
                         </button>

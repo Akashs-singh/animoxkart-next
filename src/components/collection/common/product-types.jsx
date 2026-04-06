@@ -43,7 +43,6 @@ class ProductTypes extends Component {
 
         // Only render on client to avoid hydration mismatch
         if (!this.state.isMounted) return null;
-        // console.log(types);
         return (
             <section className="section-b-space premium-product-types-section">
                 <div className="container">

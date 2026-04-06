@@ -1,4 +1,87 @@
+// // src/services/script.js
 
+// const getDynamicSliderSettings = (defaultSlides = 6, autoplaySpeed = 3000, infinite = true) => {
+//   const width = typeof window !== 'undefined' ? window.innerWidth : 1366; // default width for SSR
+
+//   let slidesToShow = defaultSlides;
+//   let slidesToScroll = defaultSlides;
+
+//   if (width >= 1367) {
+//     slidesToShow = defaultSlides + 1;
+//     slidesToScroll = defaultSlides + 1;
+//   } else if (width >= 1024) {
+//     slidesToShow = defaultSlides;
+//     slidesToScroll = defaultSlides;
+//   } else if (width >= 767) {
+//     slidesToShow = Math.max(defaultSlides - 2, 1);
+//     slidesToScroll = Math.max(defaultSlides - 2, 1);
+//   } else if (width >= 480) {
+//     slidesToShow = 4;
+//     slidesToScroll = 4;
+//   } else {
+//     slidesToShow = 1;
+//     slidesToScroll = 1;
+//   }
+
+//   return {
+//     dots: false,
+//     infinite,
+//     speed: 300,
+//     slidesToShow,
+//     slidesToScroll,
+//     autoplay: true,
+//     autoplaySpeed,
+//   }
+// }
+// src/services/script.js
+
+// export const getDynamicSliderSettings = (defaultSlides = 6, autoplaySpeed = 3000, infinite = true) => {
+//     console.log("window is defined and width", width);
+//   let slidesToShow = defaultSlides;
+//   let slidesToScroll = defaultSlides;
+// console.log("window is defined and width", width);
+//   if (typeof window !== 'undefined') {
+//     const width = window.innerWidth;
+// console.log("window is defined and width", width);
+//     if (width >= 1367) {
+//       slidesToShow = defaultSlides + 1;
+//       slidesToScroll = defaultSlides + 1;
+//     } else if (width >= 1024) {
+//       slidesToShow = defaultSlides;
+//       slidesToScroll = defaultSlides;
+//     } else if (width >= 767) {
+//       slidesToShow = Math.max(defaultSlides - 2, 1);
+//       slidesToScroll = Math.max(defaultSlides - 2, 1);
+//     } else if (width >= 480) {
+//       slidesToShow = Math.min(4, defaultSlides);
+//       slidesToScroll = Math.min(4, defaultSlides);
+//     } else {
+//       slidesToShow = 1;
+//       slidesToScroll = 1;
+//     }
+//   } else{
+//     console.log("window is undefined");
+//   }
+
+//   return {
+//     dots: false,
+//     infinite,
+//     speed: 300,
+//     slidesToShow,
+//     slidesToScroll,
+//     autoplay: true,
+//     autoplaySpeed,
+//   };
+// };
+
+
+// // Example sliders
+// export const Product4 = () => getDynamicSliderSettings(4, 3000)
+// export const settings = () => getDynamicSliderSettings(5, 3000)
+// export const Product5 = () => getDynamicSliderSettings(5, 3000)
+// export const Slider4 = () => getDynamicSliderSettings(4, 5000, false)
+// export const Slider5 = () => getDynamicSliderSettings(5, 3000)
+// export const Slider6 = () => getDynamicSliderSettings(6, 3000)
 
 export const Product4 = {
     infinite: true,
@@ -9,9 +92,16 @@ export const Product4 = {
     autoplaySpeed: 3000,
     responsive: [
         {
+            breakpoint: 1800,
+            settings: {
+                slidesToShow: 4,
+                slidesToScroll: 2
+            }
+        },
+        {
             breakpoint: 1200,
             settings: {
-                slidesToShow: 3,
+                slidesToShow: 4,
                 slidesToScroll: 2
             }
         },
@@ -24,6 +114,20 @@ export const Product4 = {
         },
         {
             breakpoint: 420,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 380,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 300,
             settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2
@@ -319,6 +423,13 @@ export const Slider6 = {
             settings: {
                 slidesToShow: 4,
                 slidesToScroll: 4
+            }
+        },
+        {
+            breakpoint: 400,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3
             }
         }
 

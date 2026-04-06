@@ -1,7 +1,214 @@
 
-.accordion-button{
+/* How It Works Section */
+.how-it-works {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-weight: 400;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.step-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px 30px;
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    text-align: center;
+}
+
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.step-number {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.step-icon {
+    width: 80px;
+    height: 80px;
+    margin: 30px auto 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.step-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+.step-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.step-description {
+    font-size: 1rem;
+    color: #7f8c8d;
+    line-height: 1.6;
+}
+
+.step-description .highlight {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.step-arrow {
+    font-size: 2.5rem;
+    color: #667eea;
+    display: flex;
+    align-items: center;
     font-weight: bold;
 }
+
+/* FAQ Section */
+.faq-section {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.faq-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.faq-subtitle {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+    font-weight: 400;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accordion-modern .accordion-item {
+    border: none;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.accordion-modern .accordion-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.accordion-modern .accordion-button {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    background-color: #ffffff;
+    padding: 20px 25px;
+    border: none;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.accordion-modern .accordion-button:not(.collapsed) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    box-shadow: none;
+}
+
+.accordion-modern .accordion-button:focus {
+    box-shadow: none;
+    border: none;
+    outline: none;
+}
+
+.accordion-modern .accordion-button::after {
+    background-image: none;
+    content: '+';
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    background-size: auto;
+    flex-shrink: 0;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accordion-modern .accordion-button:not(.collapsed)::after {
+    content: '−';
+    transform: none;
+}
+
+.accordion-modern .accordion-body {
+    padding: 25px;
+    background-color: #f8f9fa;
+    color: #495057;
+    font-size: 1rem;
+    line-height: 1.7;
+    border-top: 2px solid #e9ecef;
+}
+
 p{
     line-height: 1.2;
 }
@@ -9,6 +216,55 @@ h2{
     line-height: 1.2;
 }
 @media screen and (max-width: 768px) {
+    /* How It Works - Mobile */
+    .how-it-works {
+        padding: 50px 15px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    .steps-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .step-card {
+        max-width: 100%;
+    }
+
+    .step-arrow {
+        display: none;
+    }
+
+    /* FAQ - Mobile */
+    .faq-section {
+        padding: 50px 15px;
+    }
+
+    .faq-title {
+        font-size: 1.8rem;
+    }
+
+    .faq-subtitle {
+        font-size: 1rem;
+    }
+
+    .accordion-modern .accordion-button {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+
+    .accordion-modern .accordion-body {
+        padding: 20px;
+        font-size: 0.95rem;
+    }
+
     .first-tag-intro-section{
         background-image: url('../assets/mobile-first-banner.png');
         background-size: 100% 100%; /* Stretches to fit full width and height */

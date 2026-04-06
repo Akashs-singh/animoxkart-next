@@ -2238,7 +2238,10 @@ header{
     display: none !important;
   }
   .top-header {
-    height: 0;
+    height: auto;
+    .header-contact {
+      display: none;
+    }
   }
   .main-nav-center {
     .toggle-nav {
@@ -2280,47 +2283,54 @@ header{
         position: fixed;
         bottom: 20px;
         right: 32%;
-        font-size: 0;
         padding: 0;
         z-index: 9;
+        a {
+          font-size: 0;
+        }
         i {
           font-size: 22px;
-          font-family: $font-themify;
           color: $header-font;
-          &:before {
-            content: "\e602";
-          }
+        }
+        img {
+          display: none;
         }
         .onhover-show-div {
           top: unset;
           bottom: 42px;
           right:0;
+          a {
+            font-size: 14px;
+          }
         }
         &:hover {
           i {
             color: $header-font;
+          }
+          .onhover-show-div {
+            opacity: 1;
+            transform: translateY(0px);
+            visibility: visible;
           }
         }
       }
       .mobile-wishlist {
         right: 64%;
         i {
-          font-family: $font-themify;
           color: $header-font !important;
-          &:before {
-            content: "\e634";
-          }
         }
       }
       .mobile-orders
       {
         right: 15%;
         i {
-          font-family: $font-themify;
           color: $header-font !important;
-          &:before {
-            content: "\e6bf";
-          }
+        }
+      }
+      .compare-mobile {
+        right: 48%;
+        i {
+          color: $header-font !important;
         }
       }
     }

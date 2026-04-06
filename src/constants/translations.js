@@ -105,6 +105,7 @@ var module = {
             portfolio_masonary_3: 'maçonnerie 3',
             portfolio_masonary_4: 'maçonnerie 4',
             portfolio_masonary_full: 'maçonnerie pleine largeur',
+            introduction: 'Introduction',
         }
     },
     en: {
@@ -119,6 +120,7 @@ var module = {
             new: 'new',
             more: 'more',
             pet_finder: 'finder tag',
+            introduction: 'introduction',
             smart_pet: 'smart pet',
             my_pets: 'my pets',
             premium: 'premium',
