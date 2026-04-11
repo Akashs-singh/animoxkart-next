@@ -128,16 +128,18 @@ class ProductItem extends Component {
                             </ul> : ''}
                         {product.sizes ?
                             <ul className="size-variant">
-                                {product.sizes.map((vari, i) => {
+                                {product.sizes
+                                    .filter(vari => vari.size && vari.size.toLowerCase() !== 'none')
+                                    .map((vari, i) => {
 
-                                    if (vari.productCode.includes(product.id)) {
-                                        return (
-                                            <li className='ml-1 mr-1' key={i} style={{ textDecoration: "underline" }} ><Link href={`/view/product/${vari.productCode}/${product.name}`} ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
-                                    } else {
-                                        return (
-                                            <li className='ml-1 mr-1' key={i} ><Link href={`/view/product/${vari.productCode}/${product.name}`} ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
-                                    }
-                                })}
+                                        if (vari.productCode.includes(product.id)) {
+                                            return (
+                                                <li className='ml-1 mr-1' key={i} style={{ textDecoration: "underline" }} ><Link href={`/view/product/${vari.productCode}/${product.name}`} ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
+                                        } else {
+                                            return (
+                                                <li className='ml-1 mr-1' key={i} ><Link href={`/view/product/${vari.productCode}/${product.name}`} ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
+                                        }
+                                    })}
                             </ul> : ''}
                     </div>
                 </div>

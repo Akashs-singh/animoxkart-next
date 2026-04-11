@@ -9,6 +9,7 @@ import rootReducer from '../reducers';
 
 
 function saveToLocalStorage(state) {
+    if (typeof window === 'undefined') return;
     try {
         const serializedState = JSON.stringify(state)
         localStorage.setItem('state', serializedState)
@@ -18,6 +19,7 @@ function saveToLocalStorage(state) {
 }
 
 function loadFromLocalStorage() {
+    if (typeof window === 'undefined') return undefined;
     try {
         const serializedState = localStorage.getItem('state')
         if(serializedState === null) return undefined
@@ -28,7 +30,7 @@ function loadFromLocalStorage() {
     }
 }
 
-const persistedState = loadFromLocalStorage()
+const persistedState = typeof window !== 'undefined' ? loadFromLocalStorage() : undefined
 
 /**
  * Create a Redux store that holds the app state.

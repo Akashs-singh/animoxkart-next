@@ -83,127 +83,163 @@
 // export const Slider5 = () => getDynamicSliderSettings(5, 3000)
 // export const Slider6 = () => getDynamicSliderSettings(6, 3000)
 
-export const Product4 = {
-    infinite: true,
-    speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 2,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    responsive: [
-        {
-            breakpoint: 1800,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 991,
-            settings: {
-                slidesToShow:2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 420,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 380,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 300,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
+// Helper function to get initial slider settings based on screen size
+const getInitialSlides = (breakpoints) => {
+    if (typeof window === 'undefined') return breakpoints.default;
+    
+    const width = window.innerWidth;
+    
+    // Sort breakpoints from smallest to largest
+    const sortedBreakpoints = Object.keys(breakpoints)
+        .filter(key => key !== 'default')
+        .map(Number)
+        .sort((a, b) => a - b);
+    
+    // Find the appropriate breakpoint
+    for (let i = 0; i < sortedBreakpoints.length; i++) {
+        if (width <= sortedBreakpoints[i]) {
+            return breakpoints[sortedBreakpoints[i]];
         }
-    ]
-}
-export const settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    responsive: [
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 2
+    }
+    
+    return breakpoints.default;
+};
+
+export const Product4 = (() => {
+    const initial = getInitialSlides({
+        991: { slidesToShow: 2, slidesToScroll: 2 },
+        default: { slidesToShow: 4, slidesToScroll: 2 }
+    });
+    
+    return {
+        infinite: true,
+        speed: 300,
+        slidesToShow: initial.slidesToShow,
+        slidesToScroll: initial.slidesToScroll,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        responsive: [
+            {
+                breakpoint: 1800,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 420,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
             }
-        },
-        {
-            breakpoint: 991,
-            settings: {
-                slidesToShow:2,
-                slidesToScroll: 2
+        ]
+    };
+})();
+
+export const settings = (() => {
+    const initial = getInitialSlides({
+        420: { slidesToShow: 2, slidesToScroll: 2 },
+        991: { slidesToShow: 2, slidesToScroll: 2 },
+        1200: { slidesToShow: 3, slidesToScroll: 2 },
+        default: { slidesToShow: 5, slidesToScroll: 1 }
+    });
+    
+    return {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: initial.slidesToShow,
+        slidesToScroll: initial.slidesToScroll,
+        autoplay: true,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 420,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
             }
-        },
-        {
-            breakpoint: 420,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
+        ]
+    };
+})();
+
+export const Product5 = (() => {
+    const initial = getInitialSlides({
+        480: { slidesToShow: 1, slidesToScroll: 1 },
+        768: { slidesToShow: 2, slidesToScroll: 2 },
+        1024: { slidesToShow: 3, slidesToScroll: 3 },
+        1367: { slidesToShow: 4, slidesToScroll: 4 },
+        default: { slidesToShow: 5, slidesToScroll: 5 }
+    });
+    
+    return {
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: initial.slidesToShow,
+        slidesToScroll: initial.slidesToScroll,
+        responsive: [
+            {
+                breakpoint: 1367,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
             }
-        }
-    ]
-  };
-export const Product5 = {
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    responsive: [
-        {
-            breakpoint: 1367,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 4
-            }
-        },
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true
-            }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
-    ]
-}
+        ]
+    };
+})();
 
 export const Product6 = {
     dots: false,
@@ -317,124 +353,154 @@ export const Slider3 = {
         }
     ]
 }
-export const Slider4 = {
-    infinite: false,
-    speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    responsive: [
-        {
-            breakpoint: 1200,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3
+export const Slider4 = (() => {
+    const initial = getInitialSlides({
+        586: { slidesToShow: 1, slidesToScroll: 1 },
+        991: { slidesToShow: 2, slidesToScroll: 2 },
+        1200: { slidesToShow: 3, slidesToScroll: 3 },
+        default: { slidesToShow: 4, slidesToScroll: 1 }
+    });
+    
+    return {
+        infinite: false,
+        speed: 300,
+        slidesToShow: initial.slidesToShow,
+        slidesToScroll: initial.slidesToScroll,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 1200,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 991,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 586,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
             }
-        },
-        {
-            breakpoint: 991,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 586,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
-    ]
-}
-export const Slider5 = {
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    responsive: [
-        {
-            breakpoint: 1367,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 4
-            }
-        },
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                infinite: true
-            }
-        },
-        {
-            breakpoint: 768,
-            settings: {
-                slidesToShow: 2,
-                slidesToScroll: 2
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 1,
-                slidesToScroll: 1
-            }
-        }
-    ]
-}
+        ]
+    };
+})();
 
-export const Slider6 = {
-    dots: false,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 6,
-    slidesToScroll: 6,
-    responsive: [
-        {
-            breakpoint: 1367,
-            settings: {
-                slidesToShow: 7,
-                slidesToScroll: 7,
-                infinite: true
+export const Slider5 = (() => {
+    const initial = getInitialSlides({
+        480: { slidesToShow: 1, slidesToScroll: 1 },
+        768: { slidesToShow: 2, slidesToScroll: 2 },
+        1024: { slidesToShow: 3, slidesToScroll: 3 },
+        1367: { slidesToShow: 4, slidesToScroll: 4 },
+        default: { slidesToShow: 5, slidesToScroll: 5 }
+    });
+    
+    return {
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: initial.slidesToShow,
+        slidesToScroll: initial.slidesToScroll,
+        responsive: [
+            {
+                breakpoint: 1367,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
             }
-        },
-        {
-            breakpoint: 1024,
-            settings: {
-                slidesToShow: 6,
-                slidesToScroll: 6,
-                infinite: true
-            }
-        },
-        {
-            breakpoint: 767,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 4,
-                infinite: true
-            }
-        },
-        {
-            breakpoint: 480,
-            settings: {
-                slidesToShow: 4,
-                slidesToScroll: 4
-            }
-        },
-        {
-            breakpoint: 400,
-            settings: {
-                slidesToShow: 3,
-                slidesToScroll: 3
-            }
-        }
+        ]
+    };
+})();
 
-    ]
-}
+export const Slider6 = (() => {
+    const initial = getInitialSlides({
+        400: { slidesToShow: 3, slidesToScroll: 3 },
+        480: { slidesToShow: 4, slidesToScroll: 4 },
+        767: { slidesToShow: 4, slidesToScroll: 4 },
+        1024: { slidesToShow: 6, slidesToScroll: 6 },
+        1367: { slidesToShow: 7, slidesToScroll: 7 },
+        default: { slidesToShow: 6, slidesToScroll: 6 }
+    });
+    
+    return {
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: initial.slidesToShow,
+        slidesToScroll: initial.slidesToScroll,
+        responsive: [
+            {
+                breakpoint: 1367,
+                settings: {
+                    slidesToShow: 7,
+                    slidesToScroll: 7,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 6,
+                    slidesToScroll: 6,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4,
+                    infinite: true
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 400,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            }
+        ]
+    };
+})();
 
 export const Slider7 = {
     dots: false,

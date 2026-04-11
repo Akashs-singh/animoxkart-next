@@ -60,11 +60,11 @@ class CollectionPremium extends Component {
                                     <div className="page-main-content">
                                         <div className="top-banner-wrapper">
                                             <a href="#">
-                                                <img src="/assets/images/mega-menu/2.jpg" className="img-fluid blur-up lazyload" alt="" /></a>
+                                                <img src="/assets/images/mega-menu/2.jpg" className="img-fluid blur-up lazyload" alt="Premium pet products collection - luxury dog collars, leashes and designer accessories" /></a>
                                             <div className="top-banner-content small-section pb-0">
-                                                <h2 style={{"fontSize":"24px"}}>Premium Products</h2>
+                                                <h1 style={{"fontSize":"24px", "fontWeight":"700"}}>Premium Pet Products - Luxury Quality</h1>
                                                 <h5>Treat your furry friend like royalty with premium dog products.</h5>
-                                                <h6>We understand the importance of providing your furry companion with the best of the best. That's why we offer a wide range of premium dog products that are designed to keep your dog healthy, happy, and comfortable. From high-quality food and treats to durable toys and accessories, our selection of premium dog products is sure to exceed your expectations.</h6>
+                                                <p>We understand the importance of providing your furry companion with the best of the best. That's why we offer a wide range of premium dog products that are designed to keep your dog healthy, happy, and comfortable. From high-quality food and treats to durable toys and accessories, our selection of premium dog products is sure to exceed your expectations.</p>
                                             </div>
                                         </div>
                                         <div className="collection-product-wrapper">
@@ -95,7 +95,7 @@ class CollectionPremium extends Component {
                                                     :
                                                     <div className="row">
                                                         <div className="col-sm-12 text-center section-b-space mt-5 no-found" >
-                                                            <img src={`/assets/images/empty-search.jpg`} className="img-fluid mb-4" />
+                                                            <img src={`/assets/images/empty-search.jpg`} className="img-fluid mb-4" alt="No products found - empty search results" />
                                                             <h3>Sorry! Couldn't find the product you were looking For!!!    </h3>
                                                             <p>Please check if you have misspelt something or try searching with other words.</p>
                                                             <Link href="/" className="btn btn-solid">continue shopping</Link>

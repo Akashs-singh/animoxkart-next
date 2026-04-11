@@ -226,8 +226,8 @@ class Collection extends Component {
                                         </div>
                                         <div className="top-banner-content small-section pb-0">
                                             {/* <h2 style={{ fontSize: "20px" }}>{this.formatTagSingle(category_name)}</h2> */}
-                                            <h5>Explore the best {category_tag?.name || ""} for your furry friend.</h5>
-                                            <h6>{category_name} are an essential accessory for any pet owner.</h6>
+                                            <h5>Explore the best {category_tag?.name || ""}{" "}for your furry friend.</h5>
+                                            <h6>{category_name}{" "}are an essential accessory for any pet owner.</h6>
                                         </div>
                                     </div>
                                 </div>

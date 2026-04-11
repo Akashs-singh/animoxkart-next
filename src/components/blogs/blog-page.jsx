@@ -12,16 +12,21 @@ class BlogPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            blogs: [],
-            recentBlogs: [],
-            popularBlogs: [],
-            loading: true,
+            blogs: props.initialBlogs || [],
+            recentBlogs: props.initialRecentBlogs || [],
+            popularBlogs: props.initialPopularBlogs || [],
+            loading: !props.initialBlogs, // Only show loading if no initial data
         }
        
     }
     StripHtmlTags(html) {
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        return doc.body.textContent || "";
+        // Check if we're in the browser environment
+        if (typeof window !== 'undefined' && typeof DOMParser !== 'undefined') {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return doc.body.textContent || "";
+        }
+        // Fallback for server-side rendering - simple regex-based HTML stripping
+        return html.replace(/<[^>]*>/g, '');
     }
     formatString(input) {
         // Convert the input string to lowercase

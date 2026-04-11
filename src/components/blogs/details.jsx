@@ -10,21 +10,28 @@ import Head from 'next/head'
 class BlogDetails extends Component {
   constructor(props) {
     super(props)
+    
+    // Use initial blog data if provided (from SSR/SSG)
+    const initialBlog = props.initialBlog || {
+      id: '', blog_id: '', title: '', author_image: '',
+      blog_image: '', author_name: '', date: '',
+      short_description: '', content: '', tags: [],
+      product_tags: [], video_url: '', extend_content: '',
+      likes: '', comments: [],
+    };
+    
     this.state = {
-      blog: {
-        id: '', blog_id: '', title: '', author_image: '',
-        blog_image: '', author_name: '', date: '',
-        short_description: '', content: '', tags: [],
-        product_tags: [], video_url: '', extend_content: '',
-        likes: '', comments: [],
-      },
-      loading: true,
+      blog: initialBlog,
+      loading: !props.initialBlog, // Only show loading if no initial data
     }
   }
 
   componentDidMount() {
-    const id = this.props.params?.id  // ← safe access
-    if (id) this.getBlogById(id)
+    // Only fetch if we don't have initial data
+    if (!this.props.initialBlog) {
+      const id = this.props.params?.id;
+      if (id) this.getBlogById(id);
+    }
   }
 
   // Re-fetch if user navigates to a different blog

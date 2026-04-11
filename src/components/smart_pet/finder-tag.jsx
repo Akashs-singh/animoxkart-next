@@ -1,6 +1,6 @@
 
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import FinderTagView from './finder-tag-view';
@@ -9,6 +9,7 @@ import { BlinkBlur } from 'react-loading-indicators';
 const FinderTag = ({ params }) => {
   const router = useRouter();
   const { tag_id } = params;
+  const isMountedRef = useRef(true);
 
   const [state, setState] = useState({
     tag: {},
@@ -25,6 +26,10 @@ const FinderTag = ({ params }) => {
           'Access-Control-Allow-Origin': '*',
         }
       });
+      
+      // Only update state if component is still mounted
+      if (!isMountedRef.current) return;
+      
       if (response.status === 200 && response.data.tags.length > 0) {
         setState(prev => ({
           ...prev,
@@ -38,15 +43,26 @@ const FinderTag = ({ params }) => {
       }
     } catch (error) {
       console.error('Error fetching tag data:', error);
-      setState(prev => ({ ...prev, loading: false }));
+      // Only update state if component is still mounted
+      if (isMountedRef.current) {
+        setState(prev => ({ ...prev, loading: false }));
+      }
     }
   };
 
   useEffect(() => {
+    // Set mounted flag
+    isMountedRef.current = true;
+    
     // Fetch tag data after component is mounted
     if (tag_id) {
       getTagDetails(tag_id);
     }
+    
+    // Cleanup function to prevent state updates on unmounted component
+    return () => {
+      isMountedRef.current = false;
+    };
   }, [tag_id]);
 
   const handleLocationClick = () => {

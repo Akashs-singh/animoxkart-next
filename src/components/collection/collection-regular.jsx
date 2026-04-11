@@ -60,11 +60,11 @@ class CollectionRegular extends Component {
                                     <div className="page-main-content">
                                         <div className="top-banner-wrapper">
                                             <a href="#">
-                                                <img src="/assets/images/mega-menu/2.jpg" className="img-fluid blur-up lazyload" alt="" /></a>
+                                                <img src="/assets/images/mega-menu/2.jpg" className="img-fluid blur-up lazyload" alt="Regular pet products collection - affordable dog collars, leashes and accessories" /></a>
                                             <div className="top-banner-content small-section pb-0">
-                                                <h2 style={{"fontSize":"24px"}}>Regular Products</h2>
+                                                <h1 style={{"fontSize":"24px", "fontWeight":"700"}}>Regular Pet Products - Affordable Quality</h1>
                                                 <h5>Accessorize your pet's life with our everyday essentials.</h5>
-                                                <h6>Keep your pet comfortable and stylish with our wide range of everyday pet accessories. From collars and leashes to beds and bowls, we have everything you need to make your pet's life more enjoyable.</h6>
+                                                <p>Keep your pet comfortable and stylish with our wide range of everyday pet accessories. From collars and leashes to beds and bowls, we have everything you need to make your pet's life more enjoyable.</p>
                                             </div>
                                         </div>
                                         <div className="collection-product-wrapper">
@@ -96,7 +96,7 @@ class CollectionRegular extends Component {
                                                     :
                                                     <div className="row">
                                                         <div className="col-sm-12 text-center section-b-space mt-5 no-found" >
-                                                            <img src={`/assets/images/empty-search.jpg`} className="img-fluid mb-4" />
+                                                            <img src={`/assets/images/empty-search.jpg`} className="img-fluid mb-4" alt="No products found - empty search results" />
                                                             <h3>Sorry! Couldn't find the product you were looking For!!!    </h3>
                                                             <p>Please check if you have misspelt something or try searching with other words.</p>
                                                             <Link href="/" className="btn btn-solid">continue shopping</Link>

@@ -133,25 +133,27 @@ class ProductNew extends Component {
                         ) : null}
                         {product.sizes && product.sizes.length > 0 ? (
                             <ul className="size-variant">
-                                {product.sizes.map((vari, i) => {
-                                    if (vari.productCode.includes(product.id)) {
-                                        return (
-                                            <li className='size-selected' key={i}>
-                                                <Link href={`/view/product/${vari.productCode}/${product.name}`}>
-                                                    <span>{vari.size}</span>
-                                                </Link>
-                                            </li>
-                                        );
-                                    } else {
-                                        return (
-                                            <li key={i}>
-                                                <Link href={`/view/product/${vari.productCode}/${product.name}`}>
-                                                    <span>{vari.size}</span>
-                                                </Link>
-                                            </li>
-                                        );
-                                    }
-                                })}
+                                {product.sizes
+                                    .filter(vari => vari.size && vari.size.toLowerCase() !== 'none')
+                                    .map((vari, i) => {
+                                        if (vari.productCode.includes(product.id)) {
+                                            return (
+                                                <li className='size-selected' key={i}>
+                                                    <Link href={`/view/product/${vari.productCode}/${product.name}`}>
+                                                        <span>{vari.size}</span>
+                                                    </Link>
+                                                </li>
+                                            );
+                                        } else {
+                                            return (
+                                                <li key={i}>
+                                                    <Link href={`/view/product/${vari.productCode}/${product.name}`}>
+                                                        <span>{vari.size}</span>
+                                                    </Link>
+                                                </li>
+                                            );
+                                        }
+                                    })}
                             </ul>
                         ) : null}
                     </div>

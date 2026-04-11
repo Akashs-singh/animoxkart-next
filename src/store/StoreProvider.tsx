@@ -6,8 +6,8 @@ import { makeStore, AppStore } from './store';
 import { getAllProducts, getAllTags } from '../actions';
 
 // Cache duration: 6 hours in milliseconds
-// const CACHE_DURATION = 6 * 60 * 60 * 1000;
-const CACHE_DURATION = 1 * 60 ; // 1 minute for testing
+const CACHE_DURATION = 1 * 60 * 60 * 1000;
+// const CACHE_DURATION = 1 * 60  ; // 1 minute for testing
 const PRODUCTS_CACHE_KEY = 'products_cache';
 const TAGS_CACHE_KEY = 'tags_cache';
 const PRODUCTS_TIMESTAMP_KEY = 'products_timestamp';

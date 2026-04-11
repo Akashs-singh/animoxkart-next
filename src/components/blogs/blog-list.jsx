@@ -23,8 +23,13 @@ class BlogList extends Component {
 
     // Strip HTML tags from a string
     StripHtmlTags(html) {
-        const doc = new DOMParser().parseFromString(html, 'text/html');
-        return doc.body.textContent || "";
+        // Check if we're in the browser environment
+        if (typeof window !== 'undefined' && typeof DOMParser !== 'undefined') {
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            return doc.body.textContent || "";
+        }
+        // Fallback for server-side rendering - simple regex-based HTML stripping
+        return html.replace(/<[^>]*>/g, '');
     }
     formatString(input) {
         // Convert the input string to lowercase

@@ -173,8 +173,8 @@ export const getTrendingCollection = (products, type) => {
     const items = products.filter(product => {
         return product.category === type;
     })
-    //sort by topCollection in descending order
-    items.sort((a, b) => (a.topCollection > b.topCollection) ? -1 : 1)
+    //sort by topCollection in ascending order
+    items.sort((a, b) => (a.topCollection < b.topCollection) ? -1 : 1)
     return items.slice(0,8)
     // return items.slice(0,8)
 }
