@@ -50,6 +50,12 @@ class ProductTypes extends Component {
                         <div className="col-md-12">
                             <Slider {...Slider6} className="slide-6 no-arrow premium-types-slider">
                                     {types.map((type) => {
+                                        // Skip if type_id is null or undefined
+                                        if (type.type_id === null || type.type_id === undefined) {
+                                            return null;
+                                        }
+                                        
+                                        console.log(type);
                                         const isSelected = this.state.selectedTypeId === type.type_id;
                                         return (
                                             <div

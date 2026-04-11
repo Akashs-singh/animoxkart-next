@@ -19,6 +19,8 @@ class UpdatePetFinder extends Component {
       "tag_id": tag_id
     };
 
+    this._isMounted = false;
+
     this.state = {
       tag: {},
       tag_id: tag_id,
@@ -146,22 +148,38 @@ class UpdatePetFinder extends Component {
     this.getTags(data.tag_id);
   }
 
+  componentDidMount() {
+    this._isMounted = true;
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   // Fetch the tag data
   getTags = async (tag_id) => {
-    const response = await axios.get(process.env.NEXT_PUBLIC_API_URL_NEW + '/tags/' + tag_id, {
-      headers: {
-        "Content-Type": "application/json",
-        'Access-Control-Allow-Origin': '*',
-        'Authorization': 'Bearer ' + Cookies.get('token'),
+    try {
+      const response = await axios.get(process.env.NEXT_PUBLIC_API_URL_NEW + '/tags/' + tag_id, {
+        headers: {
+          "Content-Type": "application/json",
+          'Access-Control-Allow-Origin': '*',
+          'Authorization': 'Bearer ' + Cookies.get('token'),
+        }
+      });
+      
+      if (this._isMounted && response.data.status == true) {
+        if ((response.data.tags !== null)) {
+          this.setState({
+            tag: response.data.tag,
+          }, () => {
+            this.setFormData(response.data.tag);
+          });
+        }
       }
-    });
-    if (response.data.status == true) {
-      if ((response.data.tags !== null)) {
-        this.setState({
-          tag: response.data.tag,
-        }, () => {
-          this.setFormData(response.data.tag);
-        });
+    } catch (error) {
+      console.error('Error fetching tag data:', error);
+      if (this._isMounted) {
+        this.setState({ loading: false });
       }
     }
   };

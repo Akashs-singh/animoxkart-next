@@ -85,7 +85,7 @@ class PetProfile extends Component {
                     </div>
                 </div>
                 <div className="section-2-area">
-                    <div className="edit-section"><h3>About {data.pet_name || "the pet"}</h3> <a href={`pet-finder-tag/update/${data.tag_id}`}><i className="fa fa-pencil-square-o"></i></a></div>
+                    <div className="edit-section"><h3>About {data.pet_name || "the pet"}</h3> <a href={`/pet-finder-tag/update/${data.tag_id}`}><i className="fa fa-pencil-square-o"></i></a></div>
                     <div className="about-section">
                         <div className="stats">
                             <div className="stat">

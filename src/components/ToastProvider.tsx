@@ -1,22 +1,17 @@
-// src/app/(shop)/layout.tsx
 'use client'
 
 import { ToastContainer } from 'react-toastify'
 import { Toaster } from 'react-hot-toast'
-import HeaderOne from '@/components/common/headers/header-one'
-import FooterOne from '@/components/common/footers/footer-one'
+import 'react-toastify/dist/ReactToastify.css'
 
-export default function ShopLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function ToastProvider() {
   return (
-    <div>
-      <HeaderOne logoName={'logo.png'} />
-      {children}
-      <FooterOne logoName={'logo.png'} />
-      <ToastContainer />
+    <>
+      <ToastContainer
+        toastStyle={{
+          color: '#fff',
+        }}
+      />
       <Toaster
         position="top-right"
         reverseOrder={false}
@@ -33,7 +28,7 @@ export default function ShopLayout({
             duration: 3000,
             iconTheme: {
               primary: 'green',
-              secondary: '#fff',
+              secondary: 'white',
             },
           },
           error: {
@@ -44,6 +39,8 @@ export default function ShopLayout({
           },
         }}
       />
-    </div>
+    </>
   )
 }
+
+// Made with Bob

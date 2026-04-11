@@ -40,7 +40,7 @@ class NewProduct extends Component {
                     {arrays.map((products, index) =>
                         <div key={index}>
                             {products.map((product, i) =>
-                                <div className="media" key={i}>
+                                <div className="media" key={i} style={{ borderBottom: i < products.length - 1 ? '1px solid #ddd' : 'none', paddingBottom: '15px', marginBottom: '15px' }}>
                                     <Link href="/view/product/${product.id}"><img className="img-fluid" src={getImage(product.images)} alt="" /></Link>
                                     <div className="media-body align-self-center">
                                         <div className="rating">

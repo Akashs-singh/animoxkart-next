@@ -38,6 +38,7 @@
 import type { Metadata } from 'next'
 import StoreProvider from '@/store/StoreProvider'
 import IntlProviderWrapper from '@/components/IntlProviderWrapper'
+import ToastProvider from '@/components/ToastProvider'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import '@/index.scss'
@@ -49,7 +50,7 @@ export const metadata: Metadata = {
   },
   description:
     'Discover a world of comfort and style for your loveable pets at Animoxkart. Explore our exclusive collection of dog products.',
-  keywords: ['pet store', 'dog accessories', 'dog harness', 'dog leash', 'dog collar'],
+  keywords: ['pet store', 'dog accessories', 'dog harness', 'dog leash', 'cat collar', 'cat harness', 'dog collar'],
 }
 
 export default function RootLayout({
@@ -68,6 +69,7 @@ export default function RootLayout({
         <StoreProvider>
           <IntlProviderWrapper>
             {children}
+            <ToastProvider />
           </IntlProviderWrapper>
         </StoreProvider>
       </body>

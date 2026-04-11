@@ -66,9 +66,15 @@ class App extends Component {
       duration: 3000,
       iconTheme: {
         primary: 'green',
-        secondary: 'black',
+        secondary: '#fff',
       },
     },
+    error: {
+            style: {
+              background: '#ef4444',
+              color: '#fff',
+            },
+          },
   }}
 />
             </div>

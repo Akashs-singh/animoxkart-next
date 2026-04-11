@@ -65,7 +65,7 @@ class ProductNew extends Component {
         }
 
         return (
-            <div className="product-box" style={{ margin: '0px !important' }}>
+            <div className="product-box" style={{ margin: '0px !important', border: '1px solid #ddd', borderRadius: '8px' }}>
                 <div className="img-wrapper">
                     <div className="lable-block">
                         {(product.show_offers == true) ? <span className="lable3">{product.offer && product.offer != "" ? product.offer : 'new'}</span> : ''}
