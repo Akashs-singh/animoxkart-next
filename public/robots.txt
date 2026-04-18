@@ -1,10 +1,9 @@
 # robots.txt for Animoxkart - Pet Products E-commerce
-# Allow all search engines to crawl the site
+# Optimized to preserve crawl budget for product pages
 
 User-agent: *
-Allow: /
 
-# Disallow admin and private pages
+# Disallow private user pages and functionality
 Disallow: /admin/
 Disallow: /api/
 Disallow: /checkout/
@@ -16,11 +15,20 @@ Disallow: /login/
 Disallow: /register/
 Disallow: /forget-password/
 Disallow: /dashboard/
+Disallow: /account/
+Disallow: /user/
 
-# Allow product and category pages
+# Disallow search and filter parameters to avoid duplicate content
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*page=
+
+# Allow important pages for SEO
 Allow: /shop/
 Allow: /product/
 Allow: /view/product/
+Allow: /about-us/
+Allow: /contact/
 
-# Sitemap location
-Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml
+# Sitemap location (update with your actual domain)
+Sitemap: https://animoxkart.in/sitemap.xml

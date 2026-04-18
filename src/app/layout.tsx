@@ -51,6 +51,10 @@ export const metadata: Metadata = {
   description:
     'Discover a world of comfort and style for your loveable pets at Animoxkart. Explore our exclusive collection of dog products.',
   keywords: ['pet store', 'dog accessories', 'dog harness', 'dog leash', 'cat collar', 'cat harness', 'dog collar'],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
 }
 
 export default function RootLayout({
