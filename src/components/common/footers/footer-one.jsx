@@ -173,7 +173,7 @@ class FooterOne extends Component {
                                             </li>
                                             <li><i className="fa fa-phone"></i>Call Us: 9204092049</li>
                                             <li><i className="fa fa-envelope-o"></i>Email Us: <a
-                                                href="mailto:support@animoxkart.com">support@animoxkart.in</a></li>
+                                                href="mailto:support@animoxkart.in">support@animoxkart.in</a></li>
                                             <li><i className="fa fa-whatsapp"></i>Whatsapp: 9204092049</li>
                                         </ul>
                                     </div>

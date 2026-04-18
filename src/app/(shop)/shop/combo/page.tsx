@@ -1,5 +1,6 @@
 import CollectionCombo from '@/components/collection/collection-combo';
 import { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Combo Deals - Pet Product Bundles | Animoxkart',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Combo Deals - Pet Product Bundles | Animoxkart',
     description: 'Save more with our combo deals! Get matching collars, leashes, and accessories in bundle packs at discounted prices.',
     type: 'website',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/combo`,
+    url: getAbsoluteUrl('/shop/combo'),
   },
   twitter: {
     card: 'summary_large_image',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Save more with our combo deals! Get matching collars, leashes, and accessories in bundle packs.',
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/combo`,
+    canonical: getAbsoluteUrl('/shop/combo'),
   },
 };
 

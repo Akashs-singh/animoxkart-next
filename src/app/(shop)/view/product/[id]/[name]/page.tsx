@@ -1,6 +1,7 @@
 import ViewProduct from '@/components/products/view-product';
 import { Metadata } from 'next';
 import axios from 'axios';
+import { getAbsoluteUrl, getSiteUrl } from '@/lib/site-url';
 
 // Generate dynamic metadata for SEO
 export async function generateMetadata({
@@ -63,7 +64,7 @@ export async function generateMetadata({
           alt: productName,
         }],
         type: 'website',
-        url: `${process.env.NEXT_PUBLIC_SITE_URL}/view/product/${id}/${name}`,
+        url: getAbsoluteUrl(`/view/product/${id}/${name}`),
         siteName: 'Animoxkart',
       },
       twitter: {
@@ -73,7 +74,7 @@ export async function generateMetadata({
         images: [imageUrl],
       },
       alternates: {
-        canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/view/product/${id}/${name}`,
+        canonical: getAbsoluteUrl(`/view/product/${id}/${name}`),
       },
       robots: {
         index: true,
@@ -128,7 +129,7 @@ export default async function Page({
     },
     offers: {
       '@type': 'Offer',
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/view/product/${id}/${name}`,
+      url: getAbsoluteUrl(`/view/product/${id}/${name}`),
       priceCurrency: 'INR',
       price: productData.price,
       priceValidUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
@@ -156,19 +157,19 @@ export default async function Page({
         '@type': 'ListItem',
         position: 1,
         name: 'Home',
-        item: process.env.NEXT_PUBLIC_SITE_URL,
+        item: getSiteUrl(),
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: productData.category || 'Products',
-        item: `${process.env.NEXT_PUBLIC_SITE_URL}/product/${productData.category?.toLowerCase()}`,
+        item: getAbsoluteUrl(`/product/${productData.category?.toLowerCase()}`),
       },
       {
         '@type': 'ListItem',
         position: 3,
         name: productData.name,
-        item: `${process.env.NEXT_PUBLIC_SITE_URL}/view/product/${id}/${name}`,
+        item: getAbsoluteUrl(`/view/product/${id}/${name}`),
       },
     ],
   } : null;

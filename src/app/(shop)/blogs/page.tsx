@@ -1,5 +1,6 @@
 import BlogPage from '@/components/blogs/blog-page';
 import { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Pet Care Blog - Tips, Guides & Advice | Animoxkart',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Pet Care Blog - Tips, Guides & Advice | Animoxkart',
     description: 'Read our pet care blog for expert tips, guides, and advice on dog training, nutrition, grooming, and health.',
     type: 'website',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/blogs`,
+    url: getAbsoluteUrl('/blogs'),
   },
   twitter: {
     card: 'summary_large_image',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Expert pet care tips, guides, and advice for dog and cat parents.',
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/blogs`,
+    canonical: getAbsoluteUrl('/blogs'),
   },
 };
 

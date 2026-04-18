@@ -1,5 +1,6 @@
 // src/app/(shop)/blog/[id]/[[...title]]/page.tsx
 import BlogDetails from '@/components/blogs/details'
+import { getAbsoluteUrl } from '@/lib/site-url'
 
 // Generate static paths for all blogs at build time
 export async function generateStaticParams() {
@@ -69,6 +70,9 @@ export async function generateMetadata({
     };
   }
 
+  const blogSlug = blog.title?.toLowerCase().replace(/\s+/g, '-') || '';
+  const blogUrl = getAbsoluteUrl(`/blog/${id}${blogSlug ? `/${blogSlug}` : ''}`);
+
   return {
     title: `${blog.title} | Animoxkart Blog`,
     description: blog.short_description
@@ -79,6 +83,7 @@ export async function generateMetadata({
       description: blog.short_description?.replace(/<[^>]+>/g, '').slice(0, 160),
       images: [{ url: blog.blog_image }],
       type: 'article',
+      url: blogUrl,
       publishedTime: blog.date,
       authors: [blog.author_name],
     },
@@ -87,6 +92,9 @@ export async function generateMetadata({
       title: blog.title,
       description: blog.short_description?.replace(/<[^>]+>/g, '').slice(0, 160),
       images: [blog.blog_image],
+    },
+    alternates: {
+      canonical: blogUrl,
     },
   };
 }

@@ -1,5 +1,6 @@
 import FAQ from '@/components/pages/faq';
 import { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Frequently Asked Questions (FAQ) - Pet Products | Animoxkart',
@@ -9,10 +10,10 @@ export const metadata: Metadata = {
     title: 'FAQ - Pet Products | Animoxkart',
     description: 'Find answers to common questions about our pet products, shipping, returns, and more.',
     type: 'website',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/pages/faq`,
+    url: getAbsoluteUrl('/pages/faq'),
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/pages/faq`,
+    canonical: getAbsoluteUrl('/pages/faq'),
   },
 };
 

@@ -1,6 +1,7 @@
 
 import type { Metadata } from 'next'
 import PetsPage from '@/components/layouts/pets/main'
+import { getAbsoluteUrl, getSiteUrl } from '@/lib/site-url'
 
 export const metadata: Metadata = {
   title: 'Animoxkart - Premium Dog Collars, Leashes & Harnesses Online India',
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
     title: 'Animoxkart - Premium Dog Collars, Leashes & Harnesses Online India',
     description: 'Shop premium dog & cat collars, leashes, harnesses & accessories. High-quality pet products with free shipping across India.',
     type: 'website',
-    url: process.env.NEXT_PUBLIC_SITE_URL,
+    url: getSiteUrl(),
     siteName: 'Animoxkart',
     images: [
       {
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
     images: ['https://animoxkart-products.s3.ap-south-1.amazonaws.com/home/460.jpg'],
   },
   alternates: {
-    canonical: process.env.NEXT_PUBLIC_SITE_URL,
+    canonical: getSiteUrl(),
   },
   robots: {
     index: true,
@@ -50,7 +51,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'Animoxkart',
-    url: process.env.NEXT_PUBLIC_SITE_URL,
+    url: getSiteUrl(),
     logo: 'https://animoxkart-products.s3.ap-south-1.amazonaws.com/home/460.jpg',
     description: 'Premium pet products including dog and cat collars, leashes, harnesses, and accessories. Quality pet supplies with free shipping across India.',
     address: {
@@ -72,12 +73,12 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'Animoxkart',
-    url: process.env.NEXT_PUBLIC_SITE_URL,
+    url: getSiteUrl(),
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${process.env.NEXT_PUBLIC_SITE_URL}/search?q={search_term_string}`,
+        urlTemplate: getAbsoluteUrl('/search?q={search_term_string}'),
       },
       'query-input': 'required name=search_term_string',
     },

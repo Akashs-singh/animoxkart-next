@@ -1,5 +1,12 @@
 import Collection from '@/components/collection/collection';
 import { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/lib/site-url';
+import {
+  getCatalogProducts,
+  getCatalogTags,
+  getCategoryProducts,
+  getCategoryTag,
+} from '@/lib/catalog';
 
 // Generate dynamic metadata for category pages
 export async function generateMetadata({
@@ -37,7 +44,7 @@ export async function generateMetadata({
       title: `${title} | Animoxkart`,
       description,
       type: 'website',
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/product/${categoryName}`,
+      url: getAbsoluteUrl(`/product/${categoryName}`),
     },
     twitter: {
       card: 'summary_large_image',
@@ -45,9 +52,19 @@ export async function generateMetadata({
       description,
     },
     alternates: {
-      canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/product/${categoryName}`,
+      canonical: getAbsoluteUrl(`/product/${categoryName}`),
     },
   };
+}
+
+export async function generateStaticParams() {
+  const tags = await getCatalogTags();
+
+  return tags
+    .filter((tag: any) => typeof tag?.name === 'string' && tag.name.trim() !== '')
+    .map((tag: any) => ({
+      category_name: tag.name.toLowerCase(),
+    }));
 }
 
 export default async function Page({
@@ -56,7 +73,18 @@ export default async function Page({
   params: Promise<{ [key: string]: string | string[] }>;
 }) {
   const resolvedParams = await params;
-  return <Collection params={resolvedParams} />;
+  const categoryName = resolvedParams.category_name as string;
+  const [products, tags] = await Promise.all([getCatalogProducts(), getCatalogTags()]);
+
+  return (
+    <Collection
+      params={resolvedParams}
+      initialProducts={getCategoryProducts(products, categoryName)}
+      initialCategoryTag={getCategoryTag(tags, categoryName)}
+    />
+  );
 }
+
+export const revalidate = 3600;
 
 // Made with Bob

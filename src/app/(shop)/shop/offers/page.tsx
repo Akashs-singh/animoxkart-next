@@ -1,5 +1,6 @@
 import CollectionOffers from '@/components/collection/collection-offers';
 import { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Special Offers & Deals - Pet Products on Sale | Animoxkart',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Special Offers & Deals - Pet Products on Sale | Animoxkart',
     description: 'Grab amazing deals on pet products! Limited time offers on dog and cat collars, leashes, harnesses, and accessories.',
     type: 'website',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/offers`,
+    url: getAbsoluteUrl('/shop/offers'),
   },
   twitter: {
     card: 'summary_large_image',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Grab amazing deals on pet products! Limited time offers on premium pet supplies.',
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/offers`,
+    canonical: getAbsoluteUrl('/shop/offers'),
   },
 };
 

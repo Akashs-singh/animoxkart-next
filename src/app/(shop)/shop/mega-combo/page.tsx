@@ -1,5 +1,6 @@
 import CollectionMegaCombo from '@/components/collection/collection-mega-combo';
 import { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Mega Combo Deals - Complete Pet Care Bundles | Animoxkart',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Mega Combo Deals - Complete Pet Care Bundles | Animoxkart',
     description: 'Get maximum savings with our mega combo deals! Complete pet care bundles with collars, leashes, harnesses, and more.',
     type: 'website',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/mega-combo`,
+    url: getAbsoluteUrl('/shop/mega-combo'),
   },
   twitter: {
     card: 'summary_large_image',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Get maximum savings with our mega combo deals! Complete pet care bundles at best prices.',
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/mega-combo`,
+    canonical: getAbsoluteUrl('/shop/mega-combo'),
   },
 };
 

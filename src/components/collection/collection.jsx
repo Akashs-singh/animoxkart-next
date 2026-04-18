@@ -17,7 +17,7 @@ class Collection extends Component {
 
         // Get category_name from Next.js params instead of match.params
         const categoryName = props.params?.category_name || '';
-        const categoryTag = props.productTags.find(
+        const categoryTag = props.initialCategoryTag || props.productTags.find(
             tag => tag.name.toLowerCase() === categoryName.toLowerCase()
         ) || {};
 
@@ -36,7 +36,7 @@ class Collection extends Component {
 
     componentDidMount() {
         this.setState({ isMounted: true });
-        this.initializeFilteredProducts();
+        this.initializeFilteredProducts(this.props.initialProducts);
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -50,9 +50,9 @@ class Collection extends Component {
         }
     }
 
-    initializeFilteredProducts = () => {
+    initializeFilteredProducts = (products = this.props.products) => {
         let filteredProducts = this.getTypeFilteredList(
-            this.props.products,
+            products,
             this.state.type_name
         );
         
@@ -114,7 +114,7 @@ class Collection extends Component {
     /** Apply filter when type changes */
     applyTypeFilter = () => {
         let filteredProducts = this.getTypeFilteredList(
-            this.props.products,
+            this.props.initialProducts?.length ? this.props.initialProducts : this.props.products,
             this.state.type_name
         );
         
@@ -249,6 +249,8 @@ const mapStateToProps = (state, ownProps) => {
         products: getCategoryTagCollections(state.data, "wearable", category),
         productTags: state.tags.tags,
         symbol: state.data.symbol,
+        initialProducts: ownProps.initialProducts || [],
+        initialCategoryTag: ownProps.initialCategoryTag || null,
     };
 };
 

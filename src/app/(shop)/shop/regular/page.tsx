@@ -1,5 +1,6 @@
 import CollectionRegular from '@/components/collection/collection-regular';
 import { Metadata } from 'next';
+import { getAbsoluteUrl } from '@/lib/site-url';
 
 export const metadata: Metadata = {
   title: 'Regular Collection - Affordable Pet Products | Animoxkart',
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
     title: 'Regular Collection - Affordable Pet Products | Animoxkart',
     description: 'Shop our regular collection of high-quality, affordable pet products including collars, leashes, harnesses, and accessories for dogs and cats.',
     type: 'website',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/regular`,
+    url: getAbsoluteUrl('/shop/regular'),
   },
   twitter: {
     card: 'summary_large_image',
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     description: 'Shop our regular collection of high-quality, affordable pet products including collars, leashes, harnesses, and accessories.',
   },
   alternates: {
-    canonical: `${process.env.NEXT_PUBLIC_SITE_URL}/shop/regular`,
+    canonical: getAbsoluteUrl('/shop/regular'),
   },
 };
 
