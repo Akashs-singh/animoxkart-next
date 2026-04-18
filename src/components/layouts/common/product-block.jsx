@@ -28,7 +28,7 @@ class ProductBlock extends Component {
               <Slider {...Slider6} className="slide-6 no-arrow premium-slider">
                 {productTags && productTags.map((tag, index) => (
                   <div className="product-block premium-product-block" key={index}>
-                    <Link href={`/product/${tag.name}`} className="product-block-link">
+                    <Link href={`/products/${tag.name}`} className="product-block-link">
                       <div className="product-block-circle">
                         <div className="circle-inner">
                           <img

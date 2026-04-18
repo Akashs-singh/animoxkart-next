@@ -457,6 +457,7 @@ export const Slider6 = (() => {
         dots: false,
         infinite: true,
         speed: 300,
+        autoplay: true,
         slidesToShow: initial.slidesToShow,
         slidesToScroll: initial.slidesToScroll,
         responsive: [

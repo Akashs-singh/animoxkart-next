@@ -36,21 +36,31 @@ class Collection extends Component {
 
     componentDidMount() {
         this.setState({ isMounted: true });
-        this.initializeFilteredProducts(this.props.initialProducts);
+        // Always use initialProducts from server if available
+        const productsToUse = this.props.initialProducts?.length > 0
+            ? this.props.initialProducts
+            : this.props.products;
+        this.initializeFilteredProducts(productsToUse);
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // If products changed due to redux update (rare), re-filter
-        if (prevProps.products !== this.props.products) {
-            this.initializeFilteredProducts();
-        }
-        // If type changed, re-filter
+        // Only re-filter if type changed, not if products changed
+        // This prevents unnecessary re-renders and potential loops
         if (prevState.type_name !== this.state.type_name) {
             this.applyTypeFilter();
         }
     }
 
-    initializeFilteredProducts = (products = this.props.products) => {
+    initializeFilteredProducts = (products) => {
+        // Use provided products parameter, don't fall back to props
+        if (!products || products.length === 0) {
+            this.setState({
+                filteredProducts: [],
+                limit: 6,
+                hasMoreItems: false
+            });
+            return;
+        }
         let filteredProducts = this.getTypeFilteredList(
             products,
             this.state.type_name
@@ -113,8 +123,13 @@ class Collection extends Component {
 
     /** Apply filter when type changes */
     applyTypeFilter = () => {
+        // Always use initialProducts from server if available
+        const productsToUse = this.props.initialProducts?.length > 0
+            ? this.props.initialProducts
+            : this.props.products;
+            
         let filteredProducts = this.getTypeFilteredList(
-            this.props.initialProducts?.length ? this.props.initialProducts : this.props.products,
+            productsToUse,
             this.state.type_name
         );
         
@@ -242,11 +257,10 @@ class Collection extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // Get category from Next.js params instead of match.params
-    const category = ownProps.params?.category_name?.toLowerCase() || '';
-
+    // Prioritize server-provided initialProducts over Redux state
+    // This ensures consistency between server and client rendering
     return {
-        products: getCategoryTagCollections(state.data, "wearable", category),
+        products: ownProps.initialProducts || [], // Use server data first
         productTags: state.tags.tags,
         symbol: state.data.symbol,
         initialProducts: ownProps.initialProducts || [],

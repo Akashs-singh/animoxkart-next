@@ -38,9 +38,8 @@ class ProductTypes extends Component {
 
         if (!categoryTag || !categoryTag.types) return null;
         const types = categoryTag?.types?.length
-            ? [{ type_id: 0, type_name: "all", image: categoryTag.image }, ...categoryTag.types]
+            ? [{ type_id: 0, type_name: "all", image: categoryTag.tag_image }, ...categoryTag.types]
             : [];
-
         // Only render on client to avoid hydration mismatch
         if (!this.state.isMounted) return null;
         return (
@@ -54,8 +53,6 @@ class ProductTypes extends Component {
                                         if (type.type_id === null || type.type_id === undefined) {
                                             return null;
                                         }
-                                        
-                                        console.log(type);
                                         const isSelected = this.state.selectedTypeId === type.type_id;
                                         return (
                                             <div
@@ -65,7 +62,7 @@ class ProductTypes extends Component {
                                             >
                                                 <div className="product-type-circle">
                                                     <div className="circle-inner">
-                                                        <img
+                                                      <img
                                                             src={type.image}
                                                             className="product-type-image"
                                                             alt={type.type_name}

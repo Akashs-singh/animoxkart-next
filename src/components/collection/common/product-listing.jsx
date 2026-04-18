@@ -41,7 +41,7 @@ class ProductListing extends Component {
 
     render (){
         const {products, addToCart, symbol, addToWishlist, addToCompare} = this.props;
-        console.log(this.props.colSize)
+        // console.log(this.props.colSize)
         return (
             <div>
                 <div className="product-wrapper-grid">

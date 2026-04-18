@@ -65,7 +65,7 @@ class ProductNew extends Component {
         }
 
         return (
-            <div className="product-box" style={{ margin: '0px !important', border: '1px solid #ddd', borderRadius: '8px' }}>
+            <div className="product-box" style={{  border: '1px solid #ddd', borderRadius: '8px' }}>
                 <div className="img-wrapper">
                     <div className="lable-block">
                         {(product.show_offers == true) ? <span className="lable3">{product.offer && product.offer != "" ? product.offer : 'new'}</span> : ''}
@@ -111,7 +111,7 @@ class ProductNew extends Component {
                     <div className="product-info-wrapper pt-2" >
                         <StarRating rating={product.gotRating ? product.gotRating : 4} />
                         <Link href={`/view/product/${product.id}/${product.name}`}>
-                            <h6 className="product-title">{product.displayName}</h6>
+                            <h6 className="product-title">{product.displayName?.replace(/^Animoxkart\s*/i, '')}</h6>
                         </Link>
                         <h4 className="product-price">
                             {symbol}{product.price}
@@ -158,8 +158,8 @@ class ProductNew extends Component {
                         ) : null}
                     </div>
                 </div>
-
-                <div className="product-action-buttons pl-2">
+                <div style={{backgroundColor: "#fafafa", width:"100%",  paddingBottom: "10px"}}>
+                        <div className="product-action-buttons" >
                     <a className="product-action-icon" href="javascript:void(0)" title="Add to Wishlist" onClick={onAddToWishlistClicked} >
                         <i className="fa fa-heart" aria-hidden="true"></i>
                     </a>
@@ -170,6 +170,8 @@ class ProductNew extends Component {
                     <Link className="product-action-icon hide-in-mobile" href="/compare" title="Compare" onClick={onAddToCompareClicked}>
                         <i className="fa fa-refresh" aria-hidden="true"></i></Link>
                 </div>
+                </div>
+                
 
 
                 <Modal open={this.state.open} onClose={this.onCloseModal} center>
@@ -227,7 +229,7 @@ class ProductNew extends Component {
                                             </div>
                                             <div className="product-buttons">
                                                 <button className="btn btn-solid" onClick={() => onAddToCartClicked(product, 1, this.state.quantity)} >add to cart</button>
-                                                <Link href="/view/product/${product.id}/${product.name}" className="btn btn-solid">view detail</Link>
+                                                <Link href={`/view/product/${product.id}/${product.name}`} className="btn btn-solid">view detail</Link>
                                             </div>
                                         </div>
                                     </div>

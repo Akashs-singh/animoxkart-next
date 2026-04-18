@@ -112,12 +112,12 @@ class NavBar extends Component {
                                                     </div>
                                                     <div className="menu-content">
                                                         <ul>
-                                                            <li><Link href="/product/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
-                                                            <li><Link href="/product/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
-                                                            <li><Link href="/product/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
-                                                            <li><Link href="/product/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
-                                                            <li><Link href="/product/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
-                                                            <li><Link href="/product/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
+                                                            <li><Link href="/products/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
+                                                            <li><Link href="/products/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
+                                                            <li><Link href="/products/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
+                                                            <li><Link href="/products/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
+                                                            <li><Link href="/products/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
+                                                            <li><Link href="/products/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -151,12 +151,12 @@ class NavBar extends Component {
                                                     </div>
                                                     <div className="menu-content" >
                                                         <ul>
-                                                            <li><Link href="/product/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
-                                                            <li><Link href="/product/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
-                                                            <li><Link href="/product/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
-                                                            <li><Link href="/product/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
-                                                            <li><Link href="/product/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
-                                                            <li><Link href="/product/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
+                                                            <li><Link href="/products/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
+                                                            <li><Link href="/products/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
+                                                            <li><Link href="/products/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
+                                                            <li><Link href="/products/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
+                                                            <li><Link href="/products/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
+                                                            <li><Link href="/products/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -171,12 +171,12 @@ class NavBar extends Component {
                                                     </div>
                                                     <div className="menu-content">
                                                         <ul>
-                                                            <li><Link href="/product/collar?pet=dog" onClick={this.closeNav.bind(this)} >Dog Collar</Link></li>
-                                                            <li><Link href="/product/leash?pet=dog" onClick={this.closeNav.bind(this)} >Dog Leash</Link></li>
-                                                            <li><Link href="/product/harness?pet=dog" onClick={this.closeNav.bind(this)} >Dog Harness</Link></li>
-                                                            <li><Link href="/product/body-belt?pet=dog" onClick={this.closeNav.bind(this)} >Dog Body Belt</Link></li>
-                                                            <li><Link href="/product/rope?pet=dog" onClick={this.closeNav.bind(this)} >Dog Rope</Link></li>
-                                                            <li><Link href="/product/chain?pet=dog" onClick={this.closeNav.bind(this)} >Dog Chain</Link></li>
+                                                            <li><Link href="/products/dog/collar" onClick={this.closeNav.bind(this)} >Dog Collar</Link></li>
+                                                            <li><Link href="/products/dog/leash" onClick={this.closeNav.bind(this)} >Dog Leash</Link></li>
+                                                            <li><Link href="/products/dog/harness" onClick={this.closeNav.bind(this)} >Dog Harness</Link></li>
+                                                            <li><Link href="/products/dog/body-belt" onClick={this.closeNav.bind(this)} >Dog Body Belt</Link></li>
+                                                            <li><Link href="/products/dog/rope" onClick={this.closeNav.bind(this)} >Dog Rope</Link></li>
+                                                            <li><Link href="/products/dog/chain" onClick={this.closeNav.bind(this)} >Dog Chain</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -191,12 +191,12 @@ class NavBar extends Component {
                                                     </div>
                                                     <div className="menu-content">
                                                         <ul>
-                                                            <li><Link href="/product/collar?pet=cat" onClick={this.closeNav.bind(this)} >Cat Collar</Link></li>
-                                                            <li><Link href="/product/leash?pet=cat" onClick={this.closeNav.bind(this)} >Cat Leash</Link></li>
-                                                            <li><Link href="/product/harness?pet=cat" onClick={this.closeNav.bind(this)} >Cat Harness</Link></li>
-                                                            <li><Link href="/product/body-belt?pet=cat" onClick={this.closeNav.bind(this)} >Cat Body Belt</Link></li>
-                                                            <li><Link href="/product/rope?pet=cat" onClick={this.closeNav.bind(this)} >Cat Rope</Link></li>
-                                                            <li><Link href="/product/chain?pet=cat" onClick={this.closeNav.bind(this)} >Cat Chain</Link></li>
+                                                            <li><Link href="/products/cat/collar" onClick={this.closeNav.bind(this)} >Cat Collar</Link></li>
+                                                            <li><Link href="/products/cat/leash" onClick={this.closeNav.bind(this)} >Cat Leash</Link></li>
+                                                            <li><Link href="/products/cat/harness" onClick={this.closeNav.bind(this)} >Cat Harness</Link></li>
+                                                            <li><Link href="/products/cat/body-belt" onClick={this.closeNav.bind(this)} >Cat Body Belt</Link></li>
+                                                            <li><Link href="/products/cat/rope" onClick={this.closeNav.bind(this)} >Cat Rope</Link></li>
+                                                            <li><Link href="/products/cat/chain" onClick={this.closeNav.bind(this)} >Cat Chain</Link></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -211,12 +211,12 @@ class NavBar extends Component {
                                     <span className="sub-arrow"></span>
                                 </Link>
                                 <ul className="nav-submenu">
-                                    <li><Link href="/product/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
-                                    <li><Link href="/product/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
-                                    <li><Link href="/product/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
-                                    <li><Link href="/product/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
-                                    <li><Link href="/product/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
-                                    <li><Link href="/product/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
+                                    <li><Link href="/products/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
+                                    <li><Link href="/products/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
+                                    <li><Link href="/products/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
+                                    <li><Link href="/products/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
+                                    <li><Link href="/products/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
+                                    <li><Link href="/products/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
                                 </ul>
                             </li>
                             <li className='mobile-view'>
@@ -238,12 +238,12 @@ class NavBar extends Component {
                                     <span className="sub-arrow"></span>
                                 </Link>
                                 <ul className="nav-submenu">
-                                    <li><Link href="/product/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
-                                    <li><Link href="/product/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
-                                    <li><Link href="/product/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
-                                    <li><Link href="/product/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
-                                    <li><Link href="/product/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
-                                    <li><Link href="/product/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
+                                    <li><Link href="/products/collar" onClick={this.closeNav.bind(this)} >{translate('collar')}</Link></li>
+                                    <li><Link href="/products/leash" onClick={this.closeNav.bind(this)} >{translate('leash')}</Link></li>
+                                    <li><Link href="/products/harness" onClick={this.closeNav.bind(this)} >{translate('harness')}</Link></li>
+                                    <li><Link href="/products/body-belt" onClick={this.closeNav.bind(this)} >{translate('body_belt')}</Link></li>
+                                    <li><Link href="/products/rope" onClick={this.closeNav.bind(this)} >{translate('rope')}</Link></li>
+                                    <li><Link href="/products/chain" onClick={this.closeNav.bind(this)} >{translate('chain')}</Link></li>
                                 </ul>
                             </li>
                             <li className='mobile-view'>
@@ -252,12 +252,12 @@ class NavBar extends Component {
                                     <span className="sub-arrow"></span>
                                 </Link>
                                 <ul className="nav-submenu">
-                                    <li><Link href="/product/collar?pet=dog" onClick={this.closeNav.bind(this)} >Dog Collar</Link></li>
-                                    <li><Link href="/product/leash?pet=dog" onClick={this.closeNav.bind(this)} >Dog Leash</Link></li>
-                                    <li><Link href="/product/harness?pet=dog" onClick={this.closeNav.bind(this)} >Dog Harness</Link></li>
-                                    <li><Link href="/product/body-belt?pet=dog" onClick={this.closeNav.bind(this)} >Dog Body Belt</Link></li>
-                                    <li><Link href="/product/rope?pet=dog" onClick={this.closeNav.bind(this)} >Dog Rope</Link></li>
-                                    <li><Link href="/product/chain?pet=dog" onClick={this.closeNav.bind(this)} >Dog Chain</Link></li>
+                                    <li><Link href="/products/dog/collar" onClick={this.closeNav.bind(this)} >Dog Collar</Link></li>
+                                    <li><Link href="/products/dog/leash" onClick={this.closeNav.bind(this)} >Dog Leash</Link></li>
+                                    <li><Link href="/products/dog/harness" onClick={this.closeNav.bind(this)} >Dog Harness</Link></li>
+                                    <li><Link href="/products/dog/body-belt" onClick={this.closeNav.bind(this)} >Dog Body Belt</Link></li>
+                                    <li><Link href="/products/dog/rope" onClick={this.closeNav.bind(this)} >Dog Rope</Link></li>
+                                    <li><Link href="/products/dog/chain" onClick={this.closeNav.bind(this)} >Dog Chain</Link></li>
                                 </ul>
                             </li>
                             <li className='mobile-view'>
@@ -266,12 +266,12 @@ class NavBar extends Component {
                                     <span className="sub-arrow"></span>
                                 </Link>
                                 <ul className="nav-submenu">
-                                    <li><Link href="/product/collar?pet=cat" onClick={this.closeNav.bind(this)} >Cat Collar</Link></li>
-                                    <li><Link href="/product/leash?pet=cat" onClick={this.closeNav.bind(this)} >Cat Leash</Link></li>
-                                    <li><Link href="/product/harness?pet=cat" onClick={this.closeNav.bind(this)} >Cat Harness</Link></li>
-                                    <li><Link href="/product/body-belt?pet=cat" onClick={this.closeNav.bind(this)} >Cat Body Belt</Link></li>
-                                    <li><Link href="/product/rope?pet=cat" onClick={this.closeNav.bind(this)} >Cat Rope</Link></li>
-                                    <li><Link href="/product/chain?pet=cat" onClick={this.closeNav.bind(this)} >Cat Chain</Link></li>
+                                    <li><Link href="/products/cat/collar" onClick={this.closeNav.bind(this)} >Cat Collar</Link></li>
+                                    <li><Link href="/products/cat/leash" onClick={this.closeNav.bind(this)} >Cat Leash</Link></li>
+                                    <li><Link href="/products/cat/harness" onClick={this.closeNav.bind(this)} >Cat Harness</Link></li>
+                                    <li><Link href="/products/cat/body-belt" onClick={this.closeNav.bind(this)} >Cat Body Belt</Link></li>
+                                    <li><Link href="/products/cat/rope" onClick={this.closeNav.bind(this)} >Cat Rope</Link></li>
+                                    <li><Link href="/products/cat/chain" onClick={this.closeNav.bind(this)} >Cat Chain</Link></li>
                                 </ul>
                             </li>
 

@@ -25,10 +25,11 @@ Disallow: /*?*page=
 
 # Allow important pages for SEO
 Allow: /shop/
-Allow: /product/
+Allow: /products/
+Allow: /pets/
 Allow: /view/product/
 Allow: /about-us/
 Allow: /contact/
 
-# Sitemap location (update with your actual domain)
-Sitemap: https://animoxkart.in/sitemap.xml
+# Sitemap location
+Sitemap: https://www.animoxkart.in/sitemap.xml

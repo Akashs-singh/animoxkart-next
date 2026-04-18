@@ -76,7 +76,7 @@ class ProductItem extends Component {
                     </div>
                     <div className="front">
                         {/* {console.log(product)} */}
-                        <Link href="/view/product/${product.id}/${product.name}" ><img
+                        <Link href={`/view/product/${product.id}/${product.name}`} ><img
                             src={`${
                                 // product.variants?product.variants.filter((variant) => variant.productCode == this.state.variantCode)[0].images:''
                                 product.variants ?
@@ -120,7 +120,7 @@ class ProductItem extends Component {
                         <div className="rating">
                             {RatingStars}
                         </div>
-                        <Link href="/view/product/${product.id}/${product.name}">
+                        <Link href={`/view/product/${product.id}/${product.name}`}>
                             <h6>{product.displayName}</h6>
                         </Link>
                         <h4>{symbol}{product.price}
@@ -148,10 +148,10 @@ class ProductItem extends Component {
 
                                         if (vari.productCode.includes(product.id)) {
                                             return (
-                                                <li className='ml-1 mr-1' key={i} style={{ textDecoration: "underline" }} ><Link href="/view/product/${vari.productCode}/${product.name}" ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
+                                                <li className='ml-1 mr-1' key={i} style={{ textDecoration: "underline" }} ><Link href={`/view/product/${vari.productCode}/${product.name}`} ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
                                         } else {
                                             return (
-                                                <li className='ml-1 mr-1' key={i} ><Link href="/view/product/${vari.productCode}/${product.name}" ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
+                                                <li className='ml-1 mr-1' key={i} ><Link href={`/view/product/${vari.productCode}/${product.name}`} ><span style={{ color: "black" }}>{vari.size}</span></Link></li>)
                                         }
                                     })}
                             </ul> : ''}
@@ -212,7 +212,7 @@ class ProductItem extends Component {
                                             </div>
                                             <div className="product-buttons">
                                                 <button className="btn btn-solid" onClick={() => onAddToCartClicked(product, 1, this.state.quantity)} >add to cart</button>
-                                                <Link href="/view/product/${product.id}/${product.name}" className="btn btn-solid">view detail</Link>
+                                                <Link href={`/view/product/${product.id}/${product.name}`} className="btn btn-solid">view detail</Link>
                                             </div>
                                         </div>
                                     </div>

@@ -11,7 +11,7 @@ const getData = async () => {
          }
      });
      const data = await response.data;
-     console.log(data)
+    //  console.log(data)
      //update data.json file with new data
      fs.writeFile('data copy.json', JSON.stringify(data), (err) => {
          if (err) throw err;

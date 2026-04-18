@@ -33,7 +33,7 @@ class PremiumCollection extends Component {
         return (
             <div>
                 {/*Paragraph*/}
-                <section className="section-b-space p-t-0 m-box ratio_square">
+                <section className="section-b-space p-t-0 s-box">
                     <div className="container">
                         <div className="row">
                             <div className="col">

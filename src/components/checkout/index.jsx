@@ -236,7 +236,7 @@ class checkOut extends Component {
         if (isChecked) {
             let used_wallet_amount = 0;
             let temp_amount = wallet + amount;
-            console.log(temp_amount)
+            // console.log(temp_amount)
             let amt = 0;
             if (total_amount > temp_amount) {
                 amt = total_amount - temp_amount;

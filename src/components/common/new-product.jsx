@@ -41,7 +41,7 @@ class NewProduct extends Component {
                         <div key={index}>
                             {products.map((product, i) =>
                                 <div className="media" key={i} style={{ borderBottom: i < products.length - 1 ? '1px solid #ddd' : 'none', paddingBottom: '15px', marginBottom: '15px' }}>
-                                    <Link href="/view/product/${product.id}"><img className="img-fluid" src={getImage(product.images)} alt="" /></Link>
+                                    <Link href={`/view/product/${product.id}`}><img className="img-fluid" src={getImage(product.images)} alt="" /></Link>
                                     <div className="media-body align-self-center">
                                         <div className="rating">
                                             <i className="fa fa-star"></i>
@@ -50,7 +50,7 @@ class NewProduct extends Component {
                                             <i className="fa fa-star"></i>
                                             <i className="fa fa-star"></i>
                                         </div>
-                                        <Link href="/view/product/${product.id}"><h6>{product.displayName}</h6></Link>
+                                        <Link href={`/view/product/${product.id}`}><h6>{product.displayName}</h6></Link>
                                         <h4>{symbol}{(product.price)}
                                             <del><span className="money">{symbol}{product.mrpPrice}</span></del></h4>
                                     </div>

@@ -90,6 +90,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
     {
+      url: `${baseUrl}/pets/dog`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
+      url: `${baseUrl}/pets/cat`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 0.95,
+    },
+    {
       url: `${baseUrl}/blogs`,
       lastModified: new Date(),
       changeFrequency: 'daily',
@@ -120,14 +132,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     console.log(`✅ Sitemap generated with ${productPages.length} products`);
 
-    // Generate category URLs
-    const categories = ['leash', 'collar', 'harness', 'rope', 'body-belt'];
+    // Generate category URLs (general) - /products/collar
+    const categories = ['leash', 'collar', 'harness', 'rope', 'body-belt', 'chain'];
     const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
-      url: `${baseUrl}/product/${category}`,
+      url: `${baseUrl}/products/${category}`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 0.85,
     }));
+
+    // Generate pet-specific category URLs - /products/dog/collar
+    const petTypes = ['dog', 'cat'];
+    const petCategoryPages: MetadataRoute.Sitemap = [];
+    petTypes.forEach(petType => {
+      categories.forEach(category => {
+        petCategoryPages.push({
+          url: `${baseUrl}/products/${petType}/${category}`,
+          lastModified: new Date(),
+          changeFrequency: 'daily' as const,
+          priority: 0.9,
+        });
+      });
+    });
 
     // Try to fetch blogs (optional, won't fail sitemap if it errors)
     let blogPages: MetadataRoute.Sitemap = [];
@@ -161,7 +187,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       console.warn('⚠️ Could not fetch blogs for sitemap:', blogError);
     }
 
-    return [...staticPages, ...categoryPages, ...productPages, ...blogPages];
+    return [...staticPages, ...categoryPages, ...petCategoryPages, ...productPages, ...blogPages];
   } catch (error) {
     console.error('❌ Error generating sitemap:', error);
     // Return static pages if product fetch fails

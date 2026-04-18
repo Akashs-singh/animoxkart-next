@@ -27,7 +27,7 @@ export const ChatService = {
         id: tag_id,
         createdAt: serverTimestamp(),
       });
-      console.log("object3: "+ newChatRef);
+      // console.log("object3: "+ newChatRef);
 
 
       return { id: newChatRef.id, createdAt: new Date() };
