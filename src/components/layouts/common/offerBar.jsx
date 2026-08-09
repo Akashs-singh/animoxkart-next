@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 const offers = [
   {
-    text: "Get Extra ₹200 OFF on all orders above ₹899",
+    text: "Get Extra ₹200 OFF on orders above ₹899",
     code: "SAVE200",
   },
   {

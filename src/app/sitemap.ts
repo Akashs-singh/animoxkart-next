@@ -1,10 +1,12 @@
 import { MetadataRoute } from 'next';
 import CryptoJS from 'crypto-js';
 
-// Function to fetch and decrypt products from API
-async function getProductsFromAPI() {
+const SECRET = 'animal-cat-dog-bird-fish-tree-su';
+
+// Function to fetch and decrypt data from API
+async function fetchAndDecrypt(url: string) {
   try {
-    const response = await fetch('https://api.animoxkart.com/chunk', {
+    const response = await fetch(url, {
       next: { revalidate: 3600 } // Revalidate every hour
     });
     
@@ -13,9 +15,8 @@ async function getProductsFromAPI() {
     }
 
     const { data, iv } = await response.json();
-    const secret = 'animal-cat-dog-bird-fish-tree-su';
 
-    const decrypted = CryptoJS.AES.decrypt(data, CryptoJS.enc.Utf8.parse(secret), {
+    const decrypted = CryptoJS.AES.decrypt(data, CryptoJS.enc.Utf8.parse(SECRET), {
       iv: CryptoJS.enc.Base64.parse(iv),
       mode: CryptoJS.mode.CBC,
       padding: CryptoJS.pad.Pkcs7,
@@ -25,9 +26,19 @@ async function getProductsFromAPI() {
     const decoded = JSON.parse(decodedString);
     return decoded;
   } catch (error) {
-    console.error('❌ Error fetching or decrypting products:', error);
+    console.error(`❌ Error fetching or decrypting from ${url}:`, error);
     return [];
   }
+}
+
+// Function to fetch and decrypt products from API
+async function getProductsFromAPI() {
+  return fetchAndDecrypt('https://api.animoxkart.com/chunk');
+}
+
+// Function to fetch and decrypt tags from API
+async function getTagsFromAPI() {
+  return fetchAndDecrypt('https://api.animoxkart.com/chunk-js');
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -110,8 +121,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   try {
-    // Fetch all products using encrypted API
-    const products = await getProductsFromAPI();
+    // Fetch all products and tags using encrypted API
+    const [products, tags] = await Promise.all([
+      getProductsFromAPI(),
+      getTagsFromAPI()
+    ]);
     
     // Generate product URLs
     const productPages: MetadataRoute.Sitemap = products
@@ -133,19 +147,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.log(`✅ Sitemap generated with ${productPages.length} products`);
 
     // Generate category URLs (general) - /products/collar
-    const categories = ['leash', 'collar', 'harness', 'rope', 'body-belt', 'chain'];
-    const categoryPages: MetadataRoute.Sitemap = categories.map((category) => ({
+    // Use dynamic tags from API instead of static array
+    const categories = tags
+      .filter((tag: any) => tag.name && typeof tag.name === 'string')
+      .map((tag: any) => tag.name.toLowerCase());
+    
+    const categoryPages: MetadataRoute.Sitemap = categories.map((category: string) => ({
       url: `${baseUrl}/products/${category}`,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
       priority: 0.85,
     }));
 
+    console.log(`✅ Generated ${categoryPages.length} category pages from API tags`);
+
     // Generate pet-specific category URLs - /products/dog/collar
     const petTypes = ['dog', 'cat'];
     const petCategoryPages: MetadataRoute.Sitemap = [];
     petTypes.forEach(petType => {
-      categories.forEach(category => {
+      categories.forEach((category: string) => {
         petCategoryPages.push({
           url: `${baseUrl}/products/${petType}/${category}`,
           lastModified: new Date(),
@@ -154,6 +174,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         });
       });
     });
+
+    console.log(`✅ Generated ${petCategoryPages.length} pet-specific category pages`);
 
     // Try to fetch blogs (optional, won't fail sitemap if it errors)
     let blogPages: MetadataRoute.Sitemap = [];

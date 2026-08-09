@@ -8,12 +8,12 @@ import { initializeApp } from 'firebase/app';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAQrvIusRkExduf3bXGZRePpHVIQ_WPiMU",
-  authDomain: "animoxkart-7962f.firebaseapp.com",
-  projectId: "animoxkart-7962f",
-  storageBucket: "animoxkart-7962f.appspot.com",
-  messagingSenderId: "218901776540",
-  appId: "1:218901776540:web:6410f5c192b6b887020559"
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase

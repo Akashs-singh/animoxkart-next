@@ -493,6 +493,7 @@ pre {
 .col-xl-auto {
   position: relative;
   width: 100%;
+  background-color: red;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px; }

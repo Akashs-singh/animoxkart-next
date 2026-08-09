@@ -445,7 +445,7 @@ export const Slider5 = (() => {
 
 export const Slider6 = (() => {
     const initial = getInitialSlides({
-        400: { slidesToShow: 3, slidesToScroll: 3 },
+        440: { slidesToShow: 3, slidesToScroll: 3 },
         480: { slidesToShow: 4, slidesToScroll: 4 },
         767: { slidesToShow: 4, slidesToScroll: 4 },
         1024: { slidesToShow: 6, slidesToScroll: 6 },

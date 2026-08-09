@@ -67,9 +67,9 @@ class ProductNew extends Component {
         return (
             <div className="product-box" style={{  border: '1px solid #ddd', borderRadius: '8px' }}>
                 <div className="img-wrapper">
-                    <div className="lable-block">
-                        {(product.show_offers == true) ? <span className="lable3">{product.offer && product.offer != "" ? product.offer : 'new'}</span> : ''}
-                        {(product.sale == false) ? <span className="lable4">on sale</span> : ''}
+                    <div className="product-ribbon-container">
+                        {(product.show_offers == true) ? <span className="ribbon-offer-label">{product.show_offer_text && product.show_offer_text != "" ? product.show_offer_text : 'new'}</span> : ''}
+                        {(product.sale == true) ? <span className="ribbon-sale-label">on sale</span> : ''}
 
                     </div>
                     <div className="front">
@@ -118,11 +118,11 @@ class ProductNew extends Component {
                             <del><span className="money">{symbol}{product.mrpPrice}</span></del>
                         </h4>
                         {product.variants && product.variants.length > 0 &&
-                         product.variants.some(vari => !['pattern', 'printed', "none"].includes(vari.color?.toLowerCase())) ? (
+                         product.variants.some(vari => !['pattern', 'print', "none"].includes(vari.color?.toLowerCase())) ? (
                             <ul className="color-variant">
                                 {product.variants.map((vari, i) => {
                                     // Skip if color is pattern or print
-                                    if (['pattern', 'print'].includes(vari.color?.toLowerCase())) {
+                                    if (['pattern', 'print', 'none'].includes(vari.color?.toLowerCase())) {
                                         return null;
                                     }
                                     return (

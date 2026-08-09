@@ -10,6 +10,7 @@ import {getProductTagCollections} from '../../services/index';
 import ProductListItem from "./common/product-list-item";
 import ProductItem from '../layouts/common/product-item';
 import Breadcrumb from "../common/breadcrumb";
+import ProductNew from '../layouts/common/product-new';
 
 class CollectionOffers extends Component {
 
@@ -78,10 +79,10 @@ class CollectionOffers extends Component {
                                                             </p>
                                                         }
                                                     >
-                                                        <div className="isotopeContainer row">
+                                                        <div className="isotopeContainer row product-grid-mobile">
                                                             { products.slice(0, this.state.limit).map((product, index) =>
-                                                                <div className="col-xl-3 col-sm-6 isotopeSelector" key={index}>
-                                                                    <ProductItem product={product} symbol={symbol}
+                                                                <div className="col-xl-3 col-sm-6 isotopeSelector product-col-mobile" key={index}>
+                                                                    <ProductNew product={product} symbol={symbol}
                                                                                  onAddToCompareClicked={() => addToCompare(product)}
                                                                                  onAddToWishlistClicked={() => addToWishlist(product)}
                                                                                  onAddToCartClicked={(product,qty,variantCode) => addToCartHome(product, 1,variantCode)} key={index}/>
@@ -107,6 +108,21 @@ class CollectionOffers extends Component {
                         </div>
                     </div>
                 </section>
+                <style jsx global>{`
+                  
+                    
+                    @media (max-width: 480px) {
+                        .product-grid-mobile {
+                            margin-left: -5px;
+                            margin-right: -5px;
+                        }
+                        
+                        .product-col-mobile {
+                            padding-left: 5px;
+                            padding-right: 5px;
+                        }
+                    }
+                `}</style>
             </div>
         )
     }

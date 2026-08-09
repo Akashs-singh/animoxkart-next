@@ -182,7 +182,7 @@ button:focus {
 
 section,
 .section-t-space {
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 .section-b-space {
@@ -5492,7 +5492,7 @@ r .top-header .header-dropdown li:nth-child(2) {
   border: 1px solid #ddd;
   border-radius: 12px;
   overflow: hidden;
-  background-color: #000;
+  /* background-color: #000; */
   /* margin: 10px 10px; */
 }
 
@@ -19973,7 +19973,7 @@ body.dark {
 
   section,
   .section-t-space {
-    padding-top: 20px;
+    padding-top: 0px;
   }
 
   header.header-6 {

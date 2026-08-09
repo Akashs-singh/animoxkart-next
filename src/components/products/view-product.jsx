@@ -136,7 +136,6 @@ class LeftSideBar extends Component {
                                                                 )
                                                             ) :
                                                             item?.pictures.map((vari, index) =>
-
                                                                 <div >
                                                                     <ImageZoom image={getImage(vari)} />
                                                                 </div>

@@ -2,12 +2,7 @@
 // importScripts('https://www.gstatic.com/firebasejs/10.13.2/firebase-messaging-compat.js');
 
 // firebase.initializeApp({
-//   apiKey: "AIzaSyAQrvIusRkExduf3bXGZRePpHVIQ_WPiMU",
-//   authDomain: "animoxkart-7962f.firebaseapp.com",
-//   projectId: "animoxkart-7962f",
-//   storageBucket: "animoxkart-7962f.appspot.com",
-//   messagingSenderId: "218901776540",
-//   appId: "1:218901776540:web:6410f5c192b6b887020559"
+
 // });
 
 // const messaging = firebase.messaging();

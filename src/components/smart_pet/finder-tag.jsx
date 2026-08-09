@@ -1,23 +1,21 @@
 
 'use client'
-import React, { useState, useEffect, useRef } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import FinderTagView from './finder-tag-view';
+import AttachOrRegister from './attach-or-register';
 import { BlinkBlur } from 'react-loading-indicators';
 
 const FinderTag = ({ params }) => {
-  const router = useRouter();
   const { tag_id } = params;
-  const isMountedRef = useRef(true);
 
   const [state, setState] = useState({
     tag: {},
     petProfile: true,
     loading: true,
+    notFound: false,
   });
 
-  // Fetch pet tag details based on tag_id
   const getTagDetails = async (tagId) => {
     try {
       const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_NEW}/whoami/${tagId}`, {
@@ -26,43 +24,24 @@ const FinderTag = ({ params }) => {
           'Access-Control-Allow-Origin': '*',
         }
       });
-      
-      // Only update state if component is still mounted
-      if (!isMountedRef.current) return;
-      
+
       if (response.status === 200 && response.data.tags.length > 0) {
-        setState(prev => ({
-          ...prev,
-          tag: response.data.tags[0],
-          loading: false,
-        }));
+        setState(prev => ({ ...prev, tag: response.data.tags[0], loading: false }));
       } else if (response.status === 200 && response.data.tags.length === 0) {
-        router.push('/pet-finder-tag/register/' + tagId);
+        setState(prev => ({ ...prev, loading: false, notFound: true }));
       } else {
-        router.push('/');
+        setState(prev => ({ ...prev, loading: false }));
       }
     } catch (error) {
       console.error('Error fetching tag data:', error);
-      // Only update state if component is still mounted
-      if (isMountedRef.current) {
-        setState(prev => ({ ...prev, loading: false }));
-      }
+      setState(prev => ({ ...prev, loading: false }));
     }
   };
 
   useEffect(() => {
-    // Set mounted flag
-    isMountedRef.current = true;
-    
-    // Fetch tag data after component is mounted
     if (tag_id) {
       getTagDetails(tag_id);
     }
-    
-    // Cleanup function to prevent state updates on unmounted component
-    return () => {
-      isMountedRef.current = false;
-    };
   }, [tag_id]);
 
   const handleLocationClick = () => {
@@ -89,8 +68,10 @@ const FinderTag = ({ params }) => {
         {loading ?
           <div className="loading-indicator">
             <BlinkBlur color="#427fc1" size="small" text="loading" textColor="#020202" />
-          </div> :
-          <>{petProfile && <FinderTagView data={tag} onLocationClick={handleLocationClick} />}</>
+          </div>
+          : state.notFound
+            ? <AttachOrRegister tag_id={tag_id} />
+            : <>{petProfile && <FinderTagView data={tag} onLocationClick={handleLocationClick} />}</>
         }
       </section>
     </div>

@@ -1,0 +1,54 @@
+/* Special Products Grid Styling - Override default flexbox with grid */
+.no-slider {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    width: 100%;
+}
+
+/* Override the default product-box flex styles */
+.no-slider .product-box {
+    width: 100% !important;
+    flex: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Override the nth-last-child margin that causes misalignment */
+.no-slider .product-box:nth-last-child(-n+4) {
+    margin: 0 !important;
+}
+
+/* Tablet view - 3 columns */
+@media (max-width: 1199px) {
+    .no-slider {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Small tablet - 2 columns */
+@media (max-width: 991px) {
+    .no-slider {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* Mobile view - 2 columns with reduced spacing */
+@media (max-width: 767px) {
+    .no-slider {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+/* Small mobile - 2 columns with minimal spacing */
+@media (max-width: 480px) {
+    .no-slider {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+    }
+}
+
+/* Made with Bob */

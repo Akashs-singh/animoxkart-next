@@ -166,7 +166,7 @@ class AddPetFinder extends Component {
     });
     if (response.data.status == true) {
       if (response.data.tag != null) {
-        this.props.history.push('/finder-tag/' + tag_id);
+        window.location.href = '/finder-tag/' + tag_id;
       }
     }
   };

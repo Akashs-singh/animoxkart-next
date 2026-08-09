@@ -121,7 +121,7 @@ class ProductBlock extends Component {
 
           @media (max-width: 768px) {
             .premium-product-block-section {
-              padding: 30px 0;
+              padding: 5px 0;
             }
 
             .product-block-circle {

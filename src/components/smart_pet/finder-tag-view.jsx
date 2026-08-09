@@ -19,9 +19,7 @@ class FinderTagView extends Component {
 
     componentDidMount = () => {
         if (!navigator.geolocation) {
-            this.setState({
-                showShareLocationButton: false
-            })
+            this.setState({ showShareLocationButton: false });
         }
     }
     notify = () => toast('Thank You! Location shared.');

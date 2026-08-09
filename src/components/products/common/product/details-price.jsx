@@ -7,7 +7,8 @@ import dynamic from 'next/dynamic';
 // Dynamically import Slider to avoid SSR hydration issues
 const Slider = dynamic(() => import('react-slick'), { ssr: false });
 import Modal from 'react-responsive-modal';
-import { getImage } from './../../../common/utils'
+import 'react-responsive-modal/styles.css';
+import { getImage, getSizeChartImage } from './../../../common/utils'
 
 class DetailsWithPrice extends Component {
 
@@ -90,7 +91,7 @@ class DetailsWithPrice extends Component {
                             )}
                         </ul> : ''}
                     <div className="product-description border-product">
-                        {item.sizes ?
+                        {item.sizes && item.sizes.length > 0 ?
                             <div>
                                 <h6 className="product-title size-text">select size
                                     <span><a href="#" data-toggle="modal"
@@ -98,11 +99,31 @@ class DetailsWithPrice extends Component {
                                 <div className="size-box">
                                     <ul className="size-variant-detail">
                                         {item.sizes.map((vari, i) => {
+                                            // Display "Free Size" for 'none' sizes
+                                            const displaySize = vari.size && vari.size.toLowerCase() === 'none'
+                                                ? 'Free Size'
+                                                : vari.size;
+                                            
+                                            // Check if it's free size
+                                            const isFreeSize = vari.size && vari.size.toLowerCase() === 'none';
+                                            
+                                            // For free size, ALWAYS show as non-selected (only free-size-item class)
+                                            if (isFreeSize) {
+                                                return (
+                                                    <li key={i} className="free-size-item">
+                                                        <Link href={`/view/product/${vari.productCode}/${item.name}`}>
+                                                            <span>{displaySize}</span>
+                                                        </Link>
+                                                    </li>
+                                                )
+                                            }
+                                            
+                                            // For regular sizes, show selected state
                                             if (vari.productCode.includes(item.id)) {
                                                 return (
                                                     <li key={i} className="size-selected-detail">
                                                         <Link href={`/view/product/${vari.productCode}/${item.name}`}>
-                                                            <span>{vari.size}</span>
+                                                            <span>{displaySize}</span>
                                                         </Link>
                                                     </li>
                                                 )
@@ -110,7 +131,7 @@ class DetailsWithPrice extends Component {
                                                 return (
                                                     <li key={i}>
                                                         <Link href={`/view/product/${vari.productCode}/${item.name}`}>
-                                                            <span>{vari.size}</span>
+                                                            <span>{displaySize}</span>
                                                         </Link>
                                                     </li>
                                                 )
@@ -184,18 +205,71 @@ class DetailsWithPrice extends Component {
                         </div>
                     </div> */}
                 </div>
-                <Modal open={this.state.open} onClose={this.onCloseModal} center>
-                    <div className="modal-dialog modal-dialog-centered" role="document">
-                        <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">{item.displayName}</h5>
-                            </div>
-                            <div className="modal-body">
-                                <img src={getImage(item.sizeChart)} alt="" className="img-fluid" />
-                            </div>
-                        </div>
+                <Modal
+                    open={this.state.open}
+                    onClose={this.onCloseModal}
+                    center
+                    classNames={{
+                        modal: 'size-chart-modal'
+                    }}
+                >
+                    <div className="modal-header">
+                        <h5 className="modal-title">{item.displayName} - Size Chart</h5>
+                    </div>
+                    <div className="modal-body">
+                        <img src={getSizeChartImage(item.main_sku_id)} alt="Size Chart" className="img-fluid" style={{ maxWidth: '100%', height: 'auto' }} />
                     </div>
                 </Modal>
+                <style jsx global>{`
+                    ul.size-variant-detail li.free-size-item {
+                        width: auto;
+                        min-width: 90px;
+                        height: auto;
+                        line-height: normal;
+                        border: none;
+                        margin: 5px;
+                        padding: 8px 12px;
+                        background: transparent;
+                    }
+                    
+                    ul.size-variant-detail li.free-size-item a {
+                        color: #333;
+                        font-size: 13px;
+                        font-weight: 400;
+                        padding: 5px;
+                        display: inline;
+                        text-decoration: none;
+                    }
+                    
+                    .size-chart-modal {
+                        max-width: 800px;
+                        width: 90%;
+                        padding: 20px;
+                        border-radius: 8px;
+                    }
+                    .size-chart-modal .modal-header {
+                        margin-bottom: 15px;
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid #e0e0e0;
+                    }
+                    .size-chart-modal .modal-title {
+                        font-size: 18px;
+                        font-weight: 600;
+                        margin: 0;
+                        color: #333;
+                    }
+                    .size-chart-modal .modal-body {
+                        padding: 0;
+                        text-align: center;
+                    }
+                    .react-responsive-modal-closeButton {
+                        cursor: pointer;
+                        fill: #333;
+                    }
+                    .react-responsive-modal-closeButton:hover {
+                        fill: #000;
+                    }
+                `}</style>
             </div>
         )
     }

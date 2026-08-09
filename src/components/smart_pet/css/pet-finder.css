@@ -942,6 +942,703 @@
 }
 
 
+/* ─── Vaccination Tracker ─────────────────────────────────────────────────── */
+.vaccination-section {
+  margin-top: 20px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+}
+.vaccination-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.vaccination-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+.vacc-add-btn {
+  background: #427fc1;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.vacc-loading,
+.vacc-empty {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  padding: 10px 0;
+}
+.vacc-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vacc-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  background: #f9fafb;
+}
+.vacc-card-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.vacc-name {
+  font-weight: 700;
+  font-size: 14px;
+  color: #222;
+}
+.vacc-vet {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 2px;
+}
+.vacc-status {
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+.vacc-status-done     { background: #d1fae5; color: #065f46; }
+.vacc-status-soon     { background: #fef3c7; color: #92400e; }
+.vacc-status-overdue  { background: #fee2e2; color: #991b1b; }
+.vacc-status-ok       { background: #dbeafe; color: #1e40af; }
+.vacc-card-dates {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 8px;
+}
+.vacc-card-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.vacc-done-btn {
+  background: #059669;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.vacc-edit-btn,
+.vacc-del-btn {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #555;
+}
+.vacc-del-btn { color: #dc2626; border-color: #fca5a5; }
+
+/* Modal */
+.vacc-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 9999;
+}
+.vacc-modal {
+  background: #fff;
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.vacc-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.vacc-modal-header h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+.vacc-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+.vacc-form input {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 14px;
+  outline: none;
+  background: #f9fafb;
+}
+.vacc-form input:focus { border-color: #427fc1; background: #fff; }
+.vacc-error {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: 8px;
+}
+.vacc-submit-btn {
+  width: 100%;
+  margin-top: 16px;
+  border-radius: 8px;
+}
+
+/* Public QR vaccine view */
+.vacc-public-section {
+  margin-top: 16px;
+}
+.vacc-public-section h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.vacc-public-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  font-size: 13px;
+  background: #f9fafb;
+}
+.vacc-public-name { font-weight: 700; color: #222; }
+.vacc-public-due  { color: #555; font-size: 12px; margin-top: 2px; }
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ─── Weight & Growth Tracker ─────────────────────────────────────────────── */
+.weight-tracker-section {
+  margin-top: 20px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+}
+.weight-tracker-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.weight-tracker-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+.wt-add-btn {
+  background: #427fc1;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wt-msg {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  padding: 10px 0;
+}
+/* Alert banner */
+.wt-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.wt-alert-overweight  { background: #fff7ed; border: 1px solid #fed7aa; color: #7c2d12; }
+.wt-alert-underweight { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a5f; }
+.wt-alert-healthy     { background: #f0fdf4; border: 1px solid #bbf7d0; color: #14532d; }
+.wt-alert-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.wt-store-link { margin-top: 6px; }
+.wt-store-link a {
+  color: #427fc1;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 12px;
+}
+.wt-store-link a:hover { text-decoration: underline; }
+/* Chart wrapper */
+.wt-chart-wrapper {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 8px 4px;
+  margin-bottom: 14px;
+}
+/* Log table */
+.wt-log-table {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.wt-log-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+.wt-log-main {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.wt-log-weight {
+  font-size: 15px;
+  font-weight: 700;
+  color: #222;
+}
+.wt-log-date {
+  font-size: 12px;
+  color: #6b7280;
+}
+.wt-log-note {
+  font-size: 12px;
+  color: #9ca3af;
+  flex: 1;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 120px;
+}
+.wt-del-btn {
+  background: transparent;
+  border: none;
+  color: #dc2626;
+  padding: 2px 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+/* Public QR weight badge */
+.wt-public-badge {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  color: #6b7280;
+  margin-top: 2px;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ─── Parasite Control ────────────────────────────────────────────────────── */
+.pc-section {
+  margin-top: 20px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 12px;
+}
+.pc-header {
+  margin-bottom: 14px;
+}
+.pc-header h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+.pc-msg {
+  font-size: 13px;
+  color: #666;
+  text-align: center;
+  padding: 8px 0;
+}
+/* Two-column card grid */
+.pc-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pc-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 12px;
+  background: #f9fafb;
+}
+.pc-card-overdue  { border-color: #fca5a5; background: #fff5f5; }
+.pc-card-soon     { border-color: #fde68a; background: #fffbeb; }
+.pc-card-ok       { background: #f9fafb; }
+.pc-card-unset    { background: #f3f4f6; border-style: dashed; }
+.pc-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.pc-card-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #222;
+}
+.pc-card-title .fa {
+  font-size: 13px;
+  color: #427fc1;
+}
+.pc-edit-btn {
+  background: transparent;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 3px 9px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+  cursor: pointer;
+}
+.pc-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.pc-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  gap: 4px;
+}
+.pc-label { color: #9ca3af; }
+.pc-value  { color: #222; font-weight: 600; text-align: right; }
+.pc-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+.pc-interval {
+  font-size: 10px;
+  color: #9ca3af;
+}
+/* Status chips */
+.pc-chip {
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+.pc-chip-overdue { background: #fee2e2; color: #991b1b; }
+.pc-chip-soon    { background: #fef3c7; color: #92400e; }
+.pc-chip-ok      { background: #dbeafe; color: #1e40af; }
+.pc-unset-msg {
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 0;
+}
+/* Next-due preview inside form */
+.pc-preview {
+  font-size: 12px;
+  color: #374151;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 10px;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+
+
+
+
+
+
+/* ─── My Pets — action buttons ───────────────────────────────────────────── */
+.my-pets-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.my-pets-btn-view {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #427fc1;
+  color: #427fc1;
+  background: #fff;
+  white-space: nowrap;
+}
+.my-pets-btn-health {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+}
+
+/* ─── Pet Health Manager ─────────────────────────────────────────────────── */
+.phm-wrapper {
+  max-width: 480px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.phm-topbar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 16px 8px;
+  border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 4px;
+}
+.phm-back {
+  font-size: 18px;
+  color: #374151;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.phm-title h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111;
+  margin: 0;
+}
+.phm-title span {
+  font-size: 12px;
+  color: #6b7280;
+}
+.phm-tabs {
+  display: flex;
+  border-bottom: 2px solid #e5e7eb;
+  padding: 0 16px;
+  gap: 0;
+}
+.phm-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #6b7280;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.phm-tab .fa {
+  font-size: 16px;
+}
+.phm-tab-active {
+  color: #427fc1;
+  border-bottom-color: #427fc1;
+}
+.phm-content {
+  padding: 0 16px;
+}
+/* strip the top margin of first section inside phm-content */
+.phm-content > * {
+  margin-top: 16px;
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+
+
+
+/* ─── Attach or Register — Tag choice screen ─────────────────────────────── */
+.aor-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px 40px;
+}
+.aor-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  max-width: 440px;
+  width: 100%;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+}
+.aor-icon {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+.aor-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #111;
+  text-align: center;
+  margin: 0 0 8px;
+}
+.aor-sub {
+  font-size: 14px;
+  color: #6b7280;
+  text-align: center;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+/* Two choice buttons */
+.aor-choices {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.aor-choice-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: #f9fafb;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  width: 100%;
+}
+.aor-choice-btn:hover {
+  border-color: #427fc1;
+  background: #eff6ff;
+}
+.aor-choice-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.aor-choice-btn strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 3px;
+}
+.aor-choice-btn p {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0;
+  line-height: 1.45;
+}
+/* Back link */
+.aor-back {
+  background: none;
+  border: none;
+  color: #427fc1;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 0 0 14px;
+  cursor: pointer;
+  display: block;
+}
+/* Pet picker list */
+.aor-pet-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+.aor-pet-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: #f9fafb;
+}
+.aor-pet-row:hover          { border-color: #427fc1; background: #eff6ff; }
+.aor-pet-row-selected       { border-color: #427fc1; background: #eff6ff; }
+.aor-pet-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.aor-pet-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.aor-pet-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+}
+.aor-pet-meta {
+  font-size: 12px;
+  color: #6b7280;
+}
+.aor-pet-radio {
+  font-size: 18px;
+  color: #427fc1;
+  flex-shrink: 0;
+}
+/* Action buttons at bottom of picker */
+.aor-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aor-btn-primary  { width: 100%; border-radius: 10px; }
+.aor-btn-outline  { width: 100%; border-radius: 10px; }
+.aor-btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+/* Status messages */
+.aor-loading, .aor-empty { font-size: 13px; color: #6b7280; text-align: center; padding: 12px 0; }
+.aor-error  { font-size: 13px; color: #dc2626; background: #fef2f2; border: 1px solid #fca5a5; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; }
+/* Done screen */
+.aor-done {
+  text-align: center;
+  padding: 40px 20px;
+}
+.aor-done-icon { font-size: 48px; display: block; margin-bottom: 12px; }
+.aor-done h3   { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.aor-done p    { font-size: 14px; color: #6b7280; }
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+
 
 /* Pet Finder Intro */
 

@@ -2,124 +2,95 @@
 import React, { Component } from "react";
 import Script from 'next/script';
 import "./css/pet-finder.css";
-import axios from "axios";
-import toast, { Toaster } from 'react-hot-toast';
 import Review from './intro/review.jsx';
 import Benefits from "./intro/benefits.jsx";
-import Chat from "./chat.jsx";
 import './css/intro.css';
-import { ChatProvider } from './chat/contexts/ChatContext.js';
-import ChatBox from "./chat/chatBox.jsx";
 
 class FinderTagIntro extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            tag_id: "aman",
-            showShareLocationButton: true,
-            showAlert: false,
-        };
-    }
-
-    componentDidMount = () => {
-        if (!navigator.geolocation) {
-            this.setState({
-                showShareLocationButton: false
-            })
-        }
-    }
-    notify = () => toast('Thank You! Location shared.');
-    openChat = () => {
-        window.location.href = "/chat";
-    };
-
     render() {
-        const { data } = this.props;
-        const { tag_id } = this.state;
         return (
-            <div>
-                {/* Load Bootstrap JS from CDN */}
+            <div className="intro-root">
                 <Script
                     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
                     strategy="lazyOnload"
                 />
 
-                <section className="first-tag-intro-section">
-                    {/* <div> */}
-                    <div >
-                        <div className="container">
-                            <div className="row">
-                                <div className="col">
-                                    <div className="tag-intro-content">
-                                        <h2>Smart and Secure – The Pet Finder Tag!</h2>
-                                        <h4>Next-Level Pet Safety at Your Fingertips!</h4>
-                                        <a href="shop/regular" className="btn btn-solid">buy now</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* </div> */}
-                </section>
-                <section className="second-tag-intro-section">
-                    <div>
-                        <div >
-                            <div className="container-area">
-                                <div className="col details">
-                                    <div>
-                                        <h2>Did you know?
-                                            Over 10 million pets go missing every year, with only 16-20% reunited.</h2>
-                                        <h4>Smart Pet Finder Tag – Always connected, Always protected!</h4>
-                                    </div>
-                                </div>
-                                <div className="mob-image">
-                                    <img  src={`/assets/second-image.png`} alt="pet-finder-tag" />
-                                </div>
+                {/* ── HERO ─────────────────────────────────────────────── */}
+                <section className="intro-hero">
+                    <div className="intro-hero-overlay">
+                        <div className="intro-hero-inner">
+                            <span className="intro-hero-badge">India&apos;s #1 Smart Pet Tag</span>
+                            <h1 className="intro-hero-h1">
+                                Your pet is one scan<br />away from coming home.
+                            </h1>
+                            <p className="intro-hero-sub">
+                                A QR tag on their collar. A profile on your phone. If they ever wander off,
+                                anyone who finds them can reach you in seconds — no app, no subscription, no hassle.
+                            </p>
+                            <div className="intro-hero-cta">
+                                <a href="/products/tags" className="btn btn-solid intro-btn-primary">Get Your Tag — ₹299</a>
+                                <a href="#how-it-works" className="intro-btn-ghost">See how it works ↓</a>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section className="third-tag-intro-section">
-                    <div>
-                        <div >
-                            <div className="container-area">
-                                <div className="col details">
-                                    <div>
-                                        <h2>Keep Your Pet Safe with Animoxkart Finder Tag!</h2>
-                                        <h4>Our smart pet finder tag comes with GPS alerts and an online profile, ensuring your pet is always protected. If lost, a simple scan connects the finder to you instantly—bringing your furry friend home faster!</h4>
-                                    </div>
-                                </div>
-                                <div className="mob-image">
-                                    <img  src={`/assets/fourth-image.png`} alt="pet-finder-tag" />
-                                </div>
-                            </div>
+
+                {/* ── TRUST BAR ────────────────────────────────────────── */}
+                <section className="intro-trust-bar">
+                    <div className="intro-trust-inner">
+                        <div className="intro-trust-item">
+                            <span className="intro-trust-num">10,000+</span>
+                            <span className="intro-trust-label">Pets protected</span>
+                        </div>
+                        <div className="intro-trust-divider"></div>
+                        <div className="intro-trust-item">
+                            <span className="intro-trust-num">₹0</span>
+                            <span className="intro-trust-label">Subscription forever</span>
+                        </div>
+                        <div className="intro-trust-divider"></div>
+                        <div className="intro-trust-item">
+                            <span className="intro-trust-num">No app</span>
+                            <span className="intro-trust-label">Works on any phone</span>
+                        </div>
+                        <div className="intro-trust-divider"></div>
+                        <div className="intro-trust-item">
+                            <span className="intro-trust-num">Instant</span>
+                            <span className="intro-trust-label">Alert when tag is scanned</span>
                         </div>
                     </div>
                 </section>
-                <section className="fourth-tag-intro-section">
-                    <div>
-                        <div >
-                            <div className="container-area">
-                                <div className="col details">
-                                    <div>
-                                        <h2>Protect Your Pet & Your Privacy! 🐾🔒</h2>
-                                        <h4>With our Smart Pet Finder Tag, your pet’s safety and your privacy come first! If someone finds your pet, they can scan the tag to view the profile—but your details stay hidden unless you choose to share them. Our Secure Chat feature lets finders and pet parents connect without revealing personal information, ensuring a safe and hassle-free reunion!</h4>
-                                    </div>
-                                </div>
-                                <div className="mob-image">
-                                    <img  src={`/assets/third-image.png`} alt="pet-finder-tag" />
-                                </div>
-                            </div>
+
+                {/* ── PROBLEM STATEMENT ────────────────────────────────── */}
+                <section className="intro-problem">
+                    <div className="intro-section-inner">
+                        <div className="intro-problem-text">
+                            <p className="intro-eyebrow">The hard truth</p>
+                            <h2>Every 2 minutes, a pet goes missing in India.</h2>
+                            <p className="intro-body-text">
+                                Over 10 million pets go missing every year. Less than 20% make it back home.
+                                Not because their owners didn&apos;t care — but because there was no fast,
+                                reliable way for a stranger to reach them.
+                            </p>
+                            <p className="intro-body-text">
+                                The Animoxkart Finder Tag changes that. One scan. Your phone rings.
+                                Your pet comes home.
+                            </p>
+                        </div>
+                        <div className="intro-problem-image">
+                            <img src="/assets/second-image.png" alt="Pet finder app on phone" />
                         </div>
                     </div>
                 </section>
-                <section className="how-it-works">
+
+                {/* ── HOW IT WORKS ─────────────────────────────────────── */}
+                <section className="how-it-works" id="how-it-works">
                     <div className="container">
                         <div className="section-header">
-                            <h2 className="section-title">How Does It Work?</h2>
-                            <p className="section-subtitle">Three simple steps to keep your pet safe</p>
+                            <p className="intro-eyebrow intro-eyebrow-center">Simple by design</p>
+                            <h2 className="section-title">How it works</h2>
+                            <p className="section-subtitle">Three steps. No technical knowledge needed.</p>
                         </div>
-                        
+
                         <div className="steps-container">
                             <div className="step-card">
                                 <div className="step-number">1</div>
@@ -129,9 +100,10 @@ class FinderTagIntro extends Component {
                                         <path d="M12 18h.01"></path>
                                     </svg>
                                 </div>
-                                <h3 className="step-title">Scan the Tag</h3>
+                                <h3 className="step-title">Stranger scans the tag</h3>
                                 <p className="step-description">
-                                    If someone finds your lost pet, they can scan the QR code on the <span className="highlight">Animoxkart Finder Tag</span> using their phone — no app needed!
+                                    Your pet is found. The finder points their phone at the QR code on the collar tag.
+                                    No app download. Opens instantly in any browser.
                                 </p>
                             </div>
 
@@ -144,9 +116,10 @@ class FinderTagIntro extends Component {
                                         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                                     </svg>
                                 </div>
-                                <h3 className="step-title">Securely Connect</h3>
+                                <h3 className="step-title">You get an instant alert</h3>
                                 <p className="step-description">
-                                    The finder can view essential pet details. Even if you hide your contact info, they can reach you through secure chat—ensuring privacy while allowing a quick reunion.
+                                    You receive a notification the moment the tag is scanned — with the finder&apos;s
+                                    GPS location. You know exactly where your pet is.
                                 </p>
                             </div>
 
@@ -160,184 +133,112 @@ class FinderTagIntro extends Component {
                                         <circle cx="12" cy="10" r="3"></circle>
                                     </svg>
                                 </div>
-                                <h3 className="step-title">Get Instant Location & Reunite</h3>
+                                <h3 className="step-title">Chat privately &amp; reunite</h3>
                                 <p className="step-description">
-                                    You'll receive a real-time GPS alert when the tag is scanned, helping you quickly track and reunite with your pet.
+                                    Chat directly with the finder through the app — without sharing your phone number.
+                                    Your privacy is protected while you coordinate the reunion.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </section>
-                <Benefits />
-                <Review />
-                {/* <section>
-                    <div className="customer-review">
-                        <div className="row">
-                            <div className="card" style={{ width: "18rem" }}>
-                                <img src="..." className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                            <div className="card" style={{ width: "18rem" }}>
-                                <img src="..." className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                            <div className="card" style={{ width: "18rem" }}>
-                                <img src="..." className="card-img-top" alt="..." />
-                                <div className="card-body">
-                                    <h5 className="card-title">Card title</h5>
-                                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
+
+                {/* ── PRIVACY SECTION ──────────────────────────────────── */}
+                <section className="intro-feature intro-feature-alt">
+                    <div className="intro-section-inner intro-section-inner-rev">
+                        <div className="intro-feature-image">
+                            <img src="/assets/third-image.png" alt="Privacy protection" />
+                        </div>
+                        <div className="intro-feature-text">
+                            <p className="intro-eyebrow">Your privacy first</p>
+                            <h2>Show what you want.<br />Hide what you don&apos;t.</h2>
+                            <p className="intro-body-text">
+                                When someone scans your pet&apos;s tag, they see the pet&apos;s profile.
+                                Your phone number, address, and personal details stay hidden unless
+                                you choose to share them.
+                            </p>
+                            <p className="intro-body-text">
+                                The built-in <strong>secure chat</strong> lets the finder message you
+                                directly — no personal info exchanged, no risk.
+                            </p>
+                            <a href="/products/tags" className="btn btn-solid intro-btn-section">Order now</a>
                         </div>
                     </div>
-                </section> */}
+                </section>
+
+                {/* ── HEALTH PROFILE SECTION ───────────────────────────── */}
+                <section className="intro-feature">
+                    <div className="intro-section-inner">
+                        <div className="intro-feature-text">
+                            <p className="intro-eyebrow">More than a lost tag</p>
+                            <h2>A complete health profile.<br />Always on the collar.</h2>
+                            <p className="intro-body-text">
+                                Store vaccination records, weight history, deworming schedule, and flea
+                                treatment dates — all linked to the same QR tag. When your vet or groomer
+                                scans it, they see Bruno&apos;s full health history instantly.
+                            </p>
+                            <ul className="intro-health-list">
+                                <li><span className="intro-check">✓</span> Vaccination tracker with smart reminders</li>
+                                <li><span className="intro-check">✓</span> Weight &amp; growth chart vs breed standards</li>
+                                <li><span className="intro-check">✓</span> Deworming &amp; flea/tick schedule</li>
+                                <li><span className="intro-check">✓</span> Visible on public QR scan for vets &amp; boarders</li>
+                            </ul>
+                        </div>
+                        <div className="intro-feature-image">
+                            <img src="/assets/fourth-image.png" alt="Pet health profile" />
+                        </div>
+                    </div>
+                </section>
+
+                {/* ── BENEFITS GRID ────────────────────────────────────── */}
+                <Benefits />
+
+                {/* ── REVIEWS ──────────────────────────────────────────── */}
+                <Review />
+
+                {/* ── BOTTOM CTA ───────────────────────────────────────── */}
+                <section className="intro-bottom-cta">
+                    <div className="intro-bottom-cta-inner">
+                        <h2>Give your pet a voice when they can&apos;t speak.</h2>
+                        <p>One tag. Lifetime protection. No monthly fees.</p>
+                        <a href="/products/tags" className="btn btn-solid intro-btn-primary">Get the Finder Tag — ₹299</a>
+                    </div>
+                </section>
+
+                {/* ── FAQ ──────────────────────────────────────────────── */}
                 <section className="faq-section">
                     <div className="container">
                         <div className="faq-header">
-                            <h2 className="faq-title">Frequently Asked Questions</h2>
-                            <p className="faq-subtitle">Everything you need to know about our Pet Finder Tag</p>
+                            <p className="intro-eyebrow intro-eyebrow-center">Got questions?</p>
+                            <h2 className="faq-title">Frequently asked questions</h2>
                         </div>
                         <div className="faq-container">
-                            <div className="accordion accordion-modern" id="accordionFlushExample">
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingOne">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    - What is the Animoxkart Pet Finder Tag?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">The Pet Finder Tag is a smart tag with a QR code that helps locate your pet. When scanned, it displays your pet's details and your contact information. It also provides instant chat, GPS location, and alerts if someone scans the tag.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingTwo">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    - How does the Tag QR code work?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">When someone scans the QR code on your pet's tag, they'll see your pet's profile and your contact details. You’ll receive an alert and location, and you can chat instantly with the person who found your pet. or manually search using the URL link associated with your individual tag.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingThree">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                    - Is my personal information safe?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">Yes, your personal information is secure. Only the details you choose to share will be visible to the person who scans the tag.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingFour">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                    - Is there a subscription fee?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFour" className="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">There are no subscription fees. You only pay for the tag.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingFour1">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour1" aria-expanded="false" aria-controls="flush-collapseFour1">
-                                    - How long will a furtag work?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFour1" className="accordion-collapse collapse" aria-labelledby="flush-headingFour1" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">One finder tag for each pet profile, think of it like QR Based Aadhar for your pet. Also, you can have as many pet profiles as you’d like linked to one or multiple parent account with no subscription.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingFour2">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour2" aria-expanded="false" aria-controls="flush-collapseFour2">
-                                    - Does it work with multiple pets?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFour2" className="accordion-collapse collapse" aria-labelledby="flush-headingFour2" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">One finder tag for each pet profile, think of it like QR Based Aadhar for your pet. Also, you can have as many pet profiles as you’d like linked to one or multiple parent account with no subscription.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingFive">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                                    - Do I need an app to use the Pet Finder Tag?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFive" className="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">No, you don’t need to download any app. The QR code works with any smartphone browser.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingSix">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                                    - How accurate is the GPS location?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseSix" className="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">The GPS location is based on the phone's location that scans the QR code. It provides an approximate location of your pet.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingSeven">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
-                                    - What happens if someone finds my pet?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseSeven" className="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">If someone finds your pet and scans the tag, you will receive an instant alert along with the location. You can then chat directly with the finder to arrange the return of your pet.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingEight">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight">
-                                    - Can I update my pet's or parent information?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseEight" className="accordion-collapse collapse" aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">Yes, you can easily update your pet's profile and your contact details through your Animoxkart account.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingNine">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine">
-                                    - How durable is the Pet Finder Tag?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseNine" className="accordion-collapse collapse" aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">The tag is water-resistant and made of durable materials to withstand rough use.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingTen">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
-                                    - Where can I buy the Animoxkart Pet Finder Tag?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTen" className="accordion-collapse collapse" aria-labelledby="flush-headingTen" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">You can purchase the Pet Finder Tag directly from our website or at selected pet stores.</div>
-                            </div>
-                        </div>
-                        <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-headingEleven">
-                                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven">
-                                    - What can I do if the tag breaks?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseEleven" className="accordion-collapse collapse" aria-labelledby="flush-headingEleven" data-bs-parent="#accordionFlushExample">
-                                <div className="accordion-body">The Pet Finder Tags are made form a solid plastic and should be extremely durable and weatherproof. If you have any concerns about your tag, please contact us and a member of the team will be happy to help.</div>
-                            </div>
-                        </div>
+                            <div className="accordion accordion-modern" id="faqAccordion">
+                                {[
+                                    { id: 'f1', q: 'What is the Animoxkart Pet Finder Tag?', a: 'A durable QR tag that attaches to your pet\'s collar. When scanned by anyone with a smartphone, it shows your pet\'s profile and lets the finder contact you securely — no app required on either side.' },
+                                    { id: 'f2', q: 'Do I need to download an app to use it?', a: 'No. The finder just points their camera at the QR code. It opens in any smartphone browser instantly.' },
+                                    { id: 'f3', q: 'Is my personal information safe?', a: 'Yes. You control exactly what\'s visible. Your phone number and address are hidden by default. The secure chat lets finders message you without your personal details ever being exposed.' },
+                                    { id: 'f4', q: 'Is there a subscription fee?', a: 'No subscription, ever. You pay once for the tag. All features — alerts, chat, GPS, health records — are included for life.' },
+                                    { id: 'f5', q: 'How accurate is the GPS location?', a: 'The GPS location is taken from the finder\'s phone at the moment they scan the tag. It gives you the exact location where your pet was found.' },
+                                    { id: 'f6', q: 'Can I use one account for multiple pets?', a: 'Yes. Each pet gets their own tag and profile. You manage all of them from one Animoxkart account with no extra cost.' },
+                                    { id: 'f7', q: 'What if my tag breaks or I need a replacement?', a: 'Order a new tag and scan it. You\'ll be asked whether to link it to an existing pet or register a new one — your pet\'s entire profile transfers instantly, no re-entering data.' },
+                                    { id: 'f8', q: 'How durable is the tag?', a: 'The tag is water-resistant and built for daily outdoor use — walks, rain, mud. The QR code is protected and designed to last years of wear.' },
+                                    { id: 'f9', q: 'What happens when someone scans my pet\'s tag?', a: 'You receive an instant notification with the finder\'s location. You can then open the secure chat to coordinate getting your pet back — all within the app.' },
+                                    { id: 'f10', q: 'Where can I buy the tag?', a: 'Directly from animoxkart.com or from selected pet stores. Free shipping across India.' },
+                                ].map(({ id, q, a }) => (
+                                    <div key={id} className="accordion-item">
+                                        <h2 className="accordion-header">
+                                            <button className="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target={`#${id}`}
+                                                aria-expanded="false" aria-controls={id}>
+                                                {q}
+                                            </button>
+                                        </h2>
+                                        <div id={id} className="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                            <div className="accordion-body">{a}</div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
                     </div>

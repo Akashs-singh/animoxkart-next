@@ -1,55 +1,79 @@
 import React from 'react';
 import './../css/benefits.css';
-const Benefits = () => {
-    return (
-        <section className='bg-color-secondary'>
-            <div className='third-section'>
-                <div className="container program-highlights">
-                    <h2>Why Choose Animoxkart Pet Finder Tag?</h2>
-                    <p>Discover how the Animoxkart Pet Finder Tag helps you quickly locate your pet with real-time alerts, GPS tracking, and secure communication—all without any subscription fees. Enjoy peace of mind knowing your pet can always find its way back home.</p>
-                    <div className='first-row'>
-                        <div className="col-md-4">
-                            <div className='highlight-card'>
-                                <img src={`/assets/vector/course/program-highlights/goal.svg`} alt="" />
-                                <h6>No Battery/App Required:</h6>
-                                <p>No Battery, No Charging, No Radiation, No Rashes. Focus on responsive and user-friendly interface.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className='highlight-card'>
-                                <img src={`/assets/vector/course/program-highlights/learning.svg`} alt="" />
-                                <h6>Instant Chat Feature:</h6>
-                                <p>Communicate directly with the person who found your pet, making it easier to coordinate the reunion.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-4">
-                            <div className='highlight-card'>
-                                <img src={`/assets/vector/course/program-highlights/design.svg`} alt="" />
-                                <h6>Easy to Update:</h6>
-                                <p>You can easily update your pet's profile and your contact information through your Animoxkart account.</p>
-                            </div>
-                        </div>
+
+const BENEFITS = [
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+        ),
+        title: 'No battery. No charging.',
+        body: 'Purely QR-based. No hardware to maintain, no radiation, no rashes. Works as long as the tag is on the collar.',
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+        ),
+        title: 'Instant secure chat',
+        body: 'The finder messages you directly through the app. Your phone number stays private — no awkward cold calls from strangers.',
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+            </svg>
+        ),
+        title: 'Alert the moment it\'s scanned',
+        body: 'You get a push notification with the finder\'s GPS location the second your pet\'s tag is scanned. React immediately.',
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+        ),
+        title: 'Live GPS from the finder\'s phone',
+        body: 'No GPS chip needed in the tag. The finder\'s location is sent to you when they scan — so you know exactly where to go.',
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+            </svg>
+        ),
+        title: 'Full health records on the tag',
+        body: 'Vaccinations, weight history, deworming — all linked to the QR. Your vet sees the complete health profile with one scan.',
+    },
+    {
+        icon: (
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+            </svg>
+        ),
+        title: 'No subscription. Ever.',
+        body: 'Pay once for the tag. All features — alerts, chat, GPS, health records, unlimited scans — are included for life.',
+    },
+];
+
+const Benefits = () => (
+    <section className="benefits-section">
+        <div className="benefits-inner">
+            <p className="intro-eyebrow intro-eyebrow-center">Why pet parents love it</p>
+            <h2 className="benefits-title">Everything your pet needs. Nothing you don&apos;t.</h2>
+            <div className="benefits-grid">
+                {BENEFITS.map((b, i) => (
+                    <div key={i} className="benefit-card">
+                        <div className="benefit-icon">{b.icon}</div>
+                        <h3 className="benefit-card-title">{b.title}</h3>
+                        <p className="benefit-card-body">{b.body}</p>
                     </div>
-                    <div className='second-row'>
-                        <div className="col-md-6">
-                            <div className='highlight-card'>
-                                <img src={`/assets/vector/course/program-highlights/exam.svg`} alt="" />
-                                <h6>Alerts and GPS Location:</h6>
-                                <p>Receive real-time alerts and GPS location when someone scans the tag, so you know exactly where your pet was last seen.</p>
-                            </div>
-                        </div>
-                        <div className="col-md-6">
-                            <div className='highlight-card'>
-                                <img src={`/assets/vector/course/program-highlights/curriculum-vitae.svg`} alt="" />
-                                <h6>Secure and Private:</h6>
-                                <p>Your personal information is protected, and you can control what details are shared with the person who finds your pet.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
-        </section>
-    );
-};
+        </div>
+    </section>
+);
 
 export default Benefits;

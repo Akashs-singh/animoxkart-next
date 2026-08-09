@@ -1,159 +1,117 @@
-.text-center {
+/* ── Review carousel ────────────────────────────────────────────────────── */
+.reviews-section {
+    background: #f8fafc;
+    padding: 80px 24px;
+}
+.reviews-inner {
+    max-width: 680px;
+    margin: 0 auto;
     text-align: center;
-  }
-  
-  .p-10 {
-    padding: 40px;
-  }
-  
-  .text-4xl {
-    font-size: 2.5rem;
-  }
-  
-  .font-bold {
-    font-weight: bold;
-  }
-  
-  .mb-4 {
-    margin-bottom: 1rem;
-  }
-  
-  .text-gray-600 {
-    color: #6b7280;
-  }
-  
-  .mb-10 {
-    margin-bottom: 2.5rem;
-  }
-  
-  .relative {
-    position: relative;
-  }
-  
-  .overflow-hidden {
-    overflow: hidden;
-  }
-  
-  .flex {
+}
+.reviews-title {
+    font-size: clamp(1.8rem, 3vw, 2.2rem);
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 44px;
+    letter-spacing: -0.02em;
+}
+.review-carousel {
     display: flex;
-  }
-  
-  .transition-transform {
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .min-w-full {
-    min-width: 100%;
-  }
-  
-  .p-4 {
-    padding: 1rem;
-  }
-  
-  .bg-lime-200 {
-    background-color: #e8ffb7;
-  }
-  
-  .rounded-2xl {
-    border-radius: 20px;
-  }
-  
-  .p-6 {
-    padding: 1.5rem;
-  }
-  
-  .shadow-md {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .mb-4 {
-    margin-bottom: 1rem;
-  }
-  
-  .text-yellow-500 {
-    color: #c6e000;
-  }
-  
-  .flex.justify-center {
-    justify-content: center;
-  }
-  
-  .items-center {
     align-items: center;
-  }
-  
-  .w-10 {
-    width: 2.5rem;
-  }
-  
-  .h-10 {
-    height: 2.5rem;
-  }
-  
-  .rounded-full {
+    gap: 16px;
+}
+.review-nav {
+    background: #fff;
+    border: 1px solid #e2e8f0;
     border-radius: 50%;
-  }
-  
-  .mr-3 {
-    margin-right: 0.75rem;
-  }
-  
-  .text-gray-500 {
-    color: #6b7280;
-  }
-  
-  .text-sm {
-    font-size: 0.875rem;
-  }
-  
-  .absolute {
-    position: absolute;
-  }
-  
-  .top-1\/2 {
-    top: 50%;
-  }
-  
-  .left-2 {
-    left: 0.5rem;
-  }
-  
-  .right-2 {
-    right: 0.5rem;
-  }
-  
-  .transform {
-    transform: translateY(-50%);
-  }
-  
-  .-translate-y-1\/2 {
-    transform: translateY(-50%);
-  }
-  
-  .bg-white {
-    background-color: #fff;
-  }
-  
-  .p-2 {
-    padding: 0.5rem;
-  }
-  
-  .rounded-full {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    color: #334155;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.review-nav:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    color: #fff;
+}
+.review-card {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 32px 28px;
+    text-align: left;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+}
+.review-stars {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 14px;
+    letter-spacing: 0.05em;
+}
+.star-filled { color: #f59e0b; }
+.star-empty  { color: #d1d5db; }
+.review-text {
+    font-size: 0.98rem;
+    color: #334155;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+.review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.review-avatar {
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-  }
-  
-  .shadow-md {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .hover\:bg-gray-200:hover {
-    background-color: #e5e7eb;
-  }
-  
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+.review-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+.review-state {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    display: block;
+    margin-top: 1px;
+}
+/* Dots */
+.review-dots {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 22px;
+}
+.review-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #cbd5e1;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s, transform 0.2s;
+}
+.review-dot-active {
+    background: #2563eb;
+    transform: scale(1.3);
+}
 
-
-  @media (min-width: 576px) {
-    .min-w-full {
-      min-width: 33.33%;
-    }
-  }
+@media (max-width: 580px) {
+    .reviews-section  { padding: 56px 16px; }
+    .review-card      { padding: 24px 18px; }
+    .review-nav       { width: 36px; height: 36px; }
+}

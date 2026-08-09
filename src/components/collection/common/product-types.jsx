@@ -142,6 +142,11 @@ class ProductTypes extends Component {
                         color: #2d3748;
                         transition: color 0.3s ease;
                         letter-spacing: 0.5px;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        max-width: 140px;
+                        margin: 0 auto;
                     }
 
                     .product-type-item:hover .product-type-label {
@@ -159,7 +164,7 @@ class ProductTypes extends Component {
 
                     @media (max-width: 768px) {
                         .premium-product-types-section {
-                            padding: 30px 0;
+                            padding: 5px 0;
                         }
 
                         .product-type-circle {
@@ -169,6 +174,7 @@ class ProductTypes extends Component {
 
                         .product-type-label {
                             font-size: 14px;
+                            max-width: 120px;
                         }
                     }
 
@@ -176,6 +182,11 @@ class ProductTypes extends Component {
                         .product-type-circle {
                             width: 100px;
                             height: 100px;
+                        }
+
+                        .product-type-label {
+                            font-size: 12px;
+                            max-width: 100px;
                         }
 
                         .circle-inner {

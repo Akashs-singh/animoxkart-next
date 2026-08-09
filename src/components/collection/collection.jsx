@@ -9,7 +9,7 @@ import { getCategoryTagCollections } from '../../services/index';
 import ProductNew from '../layouts/common/product-new';
 import Breadcrumb from "../common/breadcrumb";
 import ProductTypes from './common/product-types';
-import { getImage,formatTag } from './../common/utils';
+import { getImage, formatTag } from './../common/utils';
 
 class Collection extends Component {
     constructor(props) {
@@ -65,14 +65,14 @@ class Collection extends Component {
             products,
             this.state.type_name
         );
-        
+
         // Sort by price (ascending)
         filteredProducts = filteredProducts.sort((a, b) => {
             const priceA = parseFloat(a.price) || 0;
             const priceB = parseFloat(b.price) || 0;
             return priceA - priceB;
         });
-        
+
         this.setState({
             filteredProducts,
             limit: 6,
@@ -127,19 +127,19 @@ class Collection extends Component {
         const productsToUse = this.props.initialProducts?.length > 0
             ? this.props.initialProducts
             : this.props.products;
-            
+
         let filteredProducts = this.getTypeFilteredList(
             productsToUse,
             this.state.type_name
         );
-        
+
         // Sort by price (ascending)
         filteredProducts = filteredProducts.sort((a, b) => {
             const priceA = parseFloat(a.price) || 0;
             const priceB = parseFloat(b.price) || 0;
             return priceA - priceB;
         });
-        
+
         this.setState({
             filteredProducts,
             limit: 6,
@@ -162,33 +162,35 @@ class Collection extends Component {
                     onTypeSelect={this.onTypeSelect}
                 />
 
-                <section className="section-b-space">
+                <section className="section-b-space s-box">
                     <div className="collection-wrapper">
+                        {/* Banner */}
+                        <div className="top-banner-wrapper hide-if-not-in-mobile">
+                            <div>
+                            {this.state.isMounted && category_tag.show_image === 1 && (
+                                <img
+                                    src={category_tag.image && category_tag.image !== ""
+                                        ? getImage(category_tag.image)
+                                        : "/assets/images/mega-menu/2.jpg"
+                                    }
+                                    // src="/assets/images/mega-menu/2.jpg"
+                                    className="img-fluid blur-up lazyload"
+                                    alt={category_name}
+                                />
+                            )}
+                            </div>
+
+
+                            <div className="top-banner-content small-section p-3">
+                                <h2 style={{ fontSize: "20px" }}>{formatTag(category_name)}</h2>
+                                {/* <h5>Explore the best {category_tag?.name || ""} for your furry friend.</h5>
+                                                <h6>{category_name} are an essential accessory for any pet owner.</h6> */}
+                            </div>
+                        </div>
                         <div className="container">
                             <div className="row">
                                 <div className="collection-content col">
                                     <div className="page-main-content">
-
-                                        {/* Banner */}
-                                        <div className="top-banner-wrapper">
-                                            {this.state.isMounted && category_tag.show_image === 1 && (
-                                                <img
-                                                    src={category_tag.image && category_tag.image !== ""
-                                                        ? getImage(category_tag.image)
-                                                        : "/assets/images/mega-menu/2.jpg"
-                                                    }
-                                                    // src="/assets/images/mega-menu/2.jpg"
-                                                    className="img-fluid blur-up lazyload"
-                                                    alt={category_name}
-                                                />
-                                            )}
-
-                                            <div className="top-banner-content small-section pt-1 pb-0">
-                                                <h2 style={{ fontSize: "20px" }}>{formatTag(category_name)}</h2>
-                                                {/* <h5>Explore the best {category_tag?.name || ""} for your furry friend.</h5>
-                                                <h6>{category_name} are an essential accessory for any pet owner.</h6> */}
-                                            </div>
-                                        </div>
 
                                         {/* Product List */}
                                         <div className="collection-product-wrapper">
@@ -204,9 +206,9 @@ class Collection extends Component {
                                                             <p className="seen-cls seen-it-cls"><b>Yay! You have seen it all</b></p>
                                                         }
                                                     >
-                                                        <div className="isotopeContainer row">
+                                                        <div className="isotopeContainer row product-grid-mobile">
                                                             {filteredProducts.slice(0, limit).map((product, index) => (
-                                                                <div className="col-xl-3 col-sm-6 isotopeSelector" key={`${product.id}-${product.name}-${index}`}>
+                                                                <div className="col-xl-3 col-sm-6 isotopeSelector product-col-mobile" key={`${product.id}-${product.name}-${index}`}>
                                                                     <ProductNew
                                                                         product={product}
                                                                         symbol={symbol}
@@ -250,7 +252,21 @@ class Collection extends Component {
                         </div>
                     </div>
                 </section>
-
+                <style jsx global>{`
+                  
+                    
+                    @media (max-width: 480px) {
+                        .product-grid-mobile {
+                            margin-left: -5px;
+                            margin-right: -5px;
+                        }
+                        
+                        .product-col-mobile {
+                            padding-left: 5px;
+                            padding-right: 5px;
+                        }
+                    }
+                `}</style>
             </div>
         );
     }

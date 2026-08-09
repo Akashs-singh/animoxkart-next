@@ -9,6 +9,118 @@
                 0 2px 4px rgba(0, 0, 0, 0.04); */
 }
 
+/* Premium Magazine-Style Ribbon Banner */
+.product-box .product-ribbon-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    overflow: visible;
+    pointer-events: none;
+}
+
+.product-box .ribbon-offer-label {
+    position: absolute;
+    top: 25px;
+    left: -45px;
+    width: 180px;
+    padding: 8px 0;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    transform: rotate(-45deg);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.5);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+}
+
+.product-box .ribbon-offer-label::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine-ribbon 3s infinite;
+}
+
+@keyframes shine-ribbon {
+    0% {
+        transform: translateX(-100%);
+    }
+    50%, 100% {
+        transform: translateX(200%);
+    }
+}
+
+.product-box .ribbon-sale-label {
+    position: absolute;
+    top: 15px;
+    right: -35px;
+    width: 150px;
+    padding: 8px 0;
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    transform: rotate(45deg);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.5);
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+    pointer-events: auto;
+}
+
+/* Responsive adjustments for ribbon */
+@media (max-width: 768px) {
+    .product-box .ribbon-offer-label {
+        top: 20px;
+        left: -40px;
+        width: 160px;
+        padding: 6px 0;
+        font-size: 10px;
+        letter-spacing: 0.8px;
+    }
+    
+    .product-box .ribbon-sale-label {
+        top: 12px;
+        right: -32px;
+        width: 130px;
+        padding: 6px 0;
+        font-size: 10px;
+        letter-spacing: 0.8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-box .ribbon-offer-label {
+        top: 18px;
+        left: -35px;
+        width: 140px;
+        padding: 5px 0;
+        font-size: 9px;
+        letter-spacing: 0.6px;
+    }
+    
+    .product-box .ribbon-sale-label {
+        top: 10px;
+        right: -28px;
+        width: 110px;
+        padding: 5px 0;
+        font-size: 9px;
+        letter-spacing: 0.6px;
+    }
+}
+
 /* .product-box:hover {
     border-color: #427fc1;
     box-shadow: 0 12px 32px rgba(66, 127, 193, 0.25),
@@ -18,14 +130,18 @@
 } */
 
 .product-box .img-wrapper {
-    /* position: relative;
+    position: relative;
     overflow: hidden;
-    border-bottom: 1px solid #f0f0f0;
-    background: #fafafa; */
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    /* border-bottom: 1px solid #f0f0f0; */
+    /* background: #fafafa; */
 }
 
 .product-box .img-wrapper .front img {
     transition: transform 0.4s ease;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 .product-box:hover .img-wrapper .front img {

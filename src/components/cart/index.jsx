@@ -13,10 +13,15 @@ class cartComponent extends Component {
 
     constructor(props) {
         super(props)
-        // console.log(this.props.cartItems)
+        this.state = { isMounted: false }
+    }
+
+    componentDidMount() {
+        this.setState({ isMounted: true })
     }
 
     render() {
+        if (!this.state.isMounted) return null;
 
         const { cartItems, symbol, total } = this.props;
         return (
@@ -48,7 +53,7 @@ class cartComponent extends Component {
                                                     <tr>
                                                         <td>
                                                             <Link href={`/view/product/${item.id}/${item.name}`}>
-                                                                <img src={`${item.variants ? getImage(item.variants.filter((variant) => variant.productCode == item.productCode)[0].images) : getImage(item.images)}`} alt="" />
+                                                                <img src={`${getImage(item.variants?.find((variant) => variant.productCode == item.productCode)?.images ?? item.images)}`} alt="" />
                                                             </Link>
                                                         </td>
                                                         <td><Link href={`/view/product/${item.id}/${item.name}`}>{item.displayName}</Link>

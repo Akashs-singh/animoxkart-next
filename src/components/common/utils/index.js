@@ -7,7 +7,7 @@ export const getContactIdFromJWT = () => {
   const token = Cookies.get('token');
 
   if (!token) {
-    console.error('No JWT token found in cookies');
+    // console.error('No JWT token found in cookies');
     return null;  // No token found, return null
   }
 

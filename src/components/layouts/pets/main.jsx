@@ -21,6 +21,7 @@ const HeaderOne = dynamic(() => import('../../common/headers/header-one'), { ssr
 const FooterTwo = dynamic(() => import('../../common/footers/footer-two'), { ssr: false })
 const ThemeSettings = dynamic(() => import('../../common/theme-settings'), { ssr: false })
 const OfferSlider = dynamic(() => import('../common/offerBar'), { ssr: false })
+const ImpactBanner = dynamic(() => import('./impact-banner'), { ssr: false })
 
 class Pets extends Component {
   render() {
@@ -70,7 +71,137 @@ class Pets extends Component {
         </section>
 
         <ProductBlock productTags={this.props.productTags} />
+        
         <OfferSlider />
+           {/* Free Finder Tag promo banner */}
+        <section className="pt-0 pb-0 mt-4">
+          <style jsx>{`
+            .finder-tag-banner {
+              background: linear-gradient(135deg, #1a2e4a 0%, #2d5086 60%, #427fc1 100%);
+              border-radius: 12px;
+              overflow: hidden;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 36px 48px;
+              min-height: 180px;
+              gap: 24px;
+              position: relative;
+            }
+            .finder-tag-images {
+              flex-shrink: 0;
+              display: flex;
+              align-items: center;
+            }
+            .finder-tag-images img {
+              height: 160px;
+              width: auto;
+              object-fit: contain;
+              display: block;
+            }
+            /* ── Mobile: image becomes a faded watermark behind the text ── */
+            @media (max-width: 575px) {
+              .finder-tag-banner {
+                padding: 28px 24px;
+                min-height: 200px;
+              }
+              .finder-tag-images {
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                align-items: center;
+                opacity: 0.12;
+                pointer-events: none;
+              }
+              .finder-tag-images img {
+                height: 100% !important;
+                max-height: 200px;
+              }
+            }
+          `}</style>
+          <div className="container mb-4">
+            <div className="finder-tag-banner">
+
+              {/* Text — always on top on mobile thanks to z-index */}
+              <div style={{ flex: '1', minWidth: 0, position: 'relative', zIndex: 1 }}>
+                <p style={{
+                  color: '#a8c8ef',
+                  fontSize: '11px',
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.14em',
+                  marginBottom: '8px',
+                  lineHeight: '1',
+                }}>
+                  🐾&nbsp; Free with every order
+                </p>
+                <h2 style={{
+                  color: '#ffffff',
+                  fontSize: '22px',
+                  fontWeight: '700',
+                  margin: '0 0 10px',
+                  lineHeight: '1.25',
+                  textTransform: 'none',
+                  letterSpacing: '-0.01em',
+                }}>
+                  Smart GPS Pet Finder Tag — On Us
+                </h2>
+                <p style={{
+                  color: '#c8dff5',
+                  fontSize: '13.5px',
+                  margin: '0 0 6px',
+                  lineHeight: '1.6',
+                }}>
+                  Every Animoxkart order comes with a <strong style={{ color: '#ffffff' }}>free Smart Pet Finder Tag</strong> featuring{' '}
+                  <strong style={{ color: '#ffffff' }}>GPS location tracking and health monitoring</strong>.
+                </p>
+                <p style={{
+                  color: '#a8c8ef',
+                  fontSize: '13px',
+                  margin: '0 0 20px',
+                  lineHeight: '1.5',
+                }}>
+                  Keep your pet closer, safer, and better monitored — wherever they go.
+                </p>
+                <Link
+                  href="/pet-finder-tag/intro"
+                  style={{
+                    display: 'inline-block',
+                    background: '#ffffff',
+                    color: '#1a2e4a',
+                    fontSize: '12px',
+                    fontWeight: '700',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    padding: '10px 22px',
+                    borderRadius: '6px',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Learn more →
+                </Link>
+              </div>
+
+              {/* Image — desktop: beside text · mobile: faded watermark via CSS */}
+              <div className="finder-tag-images">
+                <img
+                  src="/assets/images/pets/smart-pet/backimage.png"
+                  alt="Smart Pet Finder Tag"
+                />
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* Impact Banner Section */}
+        <ImpactBanner />
+       
+        <SpecialProducts />
+
+     
+
         {/* Banner Section */}
         <section className="pt-0 mt-4 banner-6 ratio2_1">
           <style jsx>{`
@@ -80,7 +211,7 @@ class Pets extends Component {
               }
             }
           `}</style>
-          <div className="container">
+          <div className="container mb-4">
             <div className="row partition3">
               {[
                 { href: '/shop/regular', img: '1' },
@@ -128,7 +259,6 @@ class Pets extends Component {
           </div>
         </section>
 
-        <SpecialProducts />
         <CollectionNew type={'wearable'} title="TOP COLLECTION" subtitle="Special Offer" />
         <RegularCollection type={'wearable'} title="PRODUCTS" subtitle="New Offer" />
         <PremiumCollection type={'wearable'} title="PREMIUM PRODUCTS" subtitle="Special Offer" />
